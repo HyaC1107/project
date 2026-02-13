@@ -89,7 +89,9 @@ LLM을 통해 사용자에게 직관적인 리포트를 제공하여 누구나 �
 </p>
 
 ## 📌 유스케이스
- 
+
+
+
 ## 📌 서비스 흐름도 (Logic)
 <p align="center">
 <img width="1133" height="626" alt="image" src="https://github.com/user-attachments/assets/aad7a2db-6320-405e-9c38-73c1bcce6f9d" />
@@ -147,8 +149,8 @@ LLM을 통해 사용자에게 직관적인 리포트를 제공하여 누구나 �
 <td align="center"><b>UI/UX / Frontend</b></td>
 </tr>
 <tr>
-<td align="center">PM, Backend, AIServer, Raspberry Embedded,
-System Arch</td>
+<td align="center">PM, Backend, AIServer, 
+ Raspberry Embedded, System Arch</td>
   
 <td align="center">AI 모델 학습,
 HW 회로 설계</td>
@@ -190,6 +192,7 @@ Issue 3: 센서 데이터 노이즈
 문제: 수조 환경 특성상 센서 데이터가 순간적으로 튀는 이상치(Outlier) 빈번 발생.
 
 해결: 이동 평균 필터(Moving Average)와 이상치 제거 로직을 적용하여 데이터 신뢰도 확보.
+
 
 
 
