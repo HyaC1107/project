@@ -1,0 +1,235 @@
+/* In-page alert history modal overrides */
+
+.alert-modal-host {
+  position: relative;
+}
+
+/*
+  Base styles for the in-page alert modal.
+  NOTE: We intentionally scope everything under `.alert-overlay.in-page`
+  so importing this CSS on pages like `dashboard.html` won't affect existing
+  layout classes (e.g. the dashboard's `.right` aside panel).
+*/
+
+.alert-overlay.in-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2000;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.alert-overlay.in-page .alert-modal {
+  width: 726px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  position: relative;
+}
+
+.alert-overlay.in-page .alert-close {
+  position: absolute;
+  right: -58px;
+  top: -58px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2001;
+}
+
+.alert-overlay.in-page .alert-list {
+  padding: 12px;
+  height: 692px;
+  overflow-y: auto;
+  border-radius: 20px;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  scrollbar-gutter: stable;
+}
+
+.alert-overlay.in-page .alert-row {
+  display: grid;
+  grid-template-columns: 72px 1fr 120px;
+  align-items: center;
+  column-gap: 18px;
+  height: 140px;
+  padding: 0 24px;
+}
+
+.alert-overlay.in-page .left {
+  min-width: 0;
+}
+
+.alert-overlay.in-page .center {
+  min-width: 0;
+}
+
+.alert-overlay.in-page .alert-row:first-child {
+  border-radius: 20px 20px 0 0;
+}
+
+.alert-overlay.in-page .alert-row:last-child {
+  border-radius: 0 0 20px 20px;
+}
+
+.alert-overlay.in-page .alert-row.alert-danger {
+  background: rgba(251, 44, 54, 0.06);
+}
+
+.alert-overlay.in-page .alert-row.alert-info {
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.alert-overlay.in-page .divider {
+  height: 1px;
+  background: #E6E9EE;
+  margin: 0 8px;
+}
+
+.alert-overlay.in-page .icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: none;
+}
+
+.alert-overlay.in-page .icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.alert-overlay.in-page .danger-icon {
+  background: #FB2C36;
+  color: #fff;
+}
+
+.alert-overlay.in-page .blue-icon {
+  background: #3B82F6;
+  color: #fff;
+}
+
+.alert-overlay.in-page .title {
+  font-size: 24px;
+  color: #000000;
+  margin-bottom: 6px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.alert-overlay.in-page .desc {
+  color: #4A5565;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.alert-overlay.in-page .right {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  align-self: stretch;
+  padding: 0;
+  justify-self: end;
+  color: #4A5565;
+}
+
+.alert-overlay.in-page .time {
+  display: block;
+  font-size: 20px;
+  color: #4A5565;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 24px;
+  white-space: nowrap;
+  width: 100%;
+  text-align: right;
+}
+
+.alert-overlay.in-page .status {
+  display: block;
+  font-size: 20px;
+  color: #4A5565;
+  font-weight: 500;
+  margin-top: 15px;
+  text-align: right;
+  white-space: nowrap;
+  width: 100%;
+  line-height: 24px;
+}
+
+.alert-overlay.in-page .date {
+  display: block;
+  font-size: 20px;
+  color: #4A5565;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 24px;
+  white-space: nowrap;
+  width: 100%;
+  text-align: right;
+}
+
+.alert-overlay.in-page .em {
+  color: #FB2C36;
+}
+
+.alert-overlay.in-page .info-em {
+  color: #3B82F6;
+}
+
+@media (max-width: 700px) {
+  .alert-overlay.in-page .alert-modal { width: 92%; }
+  .alert-overlay.in-page .alert-close { right: 10px; top: 10px; width: 40px; height: 40px; }
+}
+
+.alert-overlay.in-page {
+  display: flex;
+}
+
+.alert-overlay.in-page.is-absolute {
+  position: absolute;
+  inset: 0;
+}
+
+.alert-overlay.in-page.is-fixed {
+  position: fixed;
+  inset: 0;
+}
+
+.alert-overlay.in-page[hidden] {
+  display: none !important;
+}
+
+/* Keep the close button inside the modal for in-page usage */
+.alert-overlay.in-page .alert-close {
+  right: 16px;
+  top: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 0;
+}
+
+.alert-overlay.in-page .alert-close img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}

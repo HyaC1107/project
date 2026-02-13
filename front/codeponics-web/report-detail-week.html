@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>농장A 주간 분석 리포트</title>
+    <link rel="stylesheet" href="css/report-detail.css">
+    <link rel="stylesheet" href="css/alert-modal.css">
+</head>
+
+<body class="alert-modal-fullscreen">
+    <div class="canvas">
+        <nav class="sidebar">
+            <div class="simbol-row">
+                <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+                <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+            </div>
+            <div class="profile">
+                <img src="./assets/images/profile.svg" alt="profile">
+                <div class="profile-name">어부의텃밭</div>
+            </div>
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html"><img src="./assets/icon/menu icon1_off.svg" alt="icon">대시보드</a>
+                <a class="menu-item" href="monitoring.html"><img src="./assets/icon/menu icon2_off.svg" alt="icon">모니터링</a>
+                <a class="menu-item active" href="report-list.html"><img src="./assets/icon/menu icon3_on.svg" alt="icon">리포트</a>
+                <a class="menu-item" href="diary-list.html"><img src="./assets/icon/menu icon4_off.svg" alt="icon">성장 일지</a>
+                <a class="menu-item" href="settings-main.html"><img src="./assets/icon/menu icon5_off.svg" alt="icon">시스템 설정</a>
+            </nav>
+            <a class="logout" href="index.html">로그아웃 →</a>
+        </nav>
+
+        <main class="main">
+            <div class="main-inner">
+                <header class="report-header">
+                    <div class="header-top">
+                        <div class="title-left">
+                            <a class="back" href="report-list.html" aria-label="뒤로가기">
+                                <img src="./assets/icon/back-arrow.svg" alt="" aria-hidden="true" />
+                            </a>
+                            <h1 class="page-title">농장A 주간 분석 리포트</h1>
+                        </div>
+                       <a class="bell-link" href="alert-history.html" style="background-color: aliceblue;">
+                            <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+                        </a>
+                    </div>
+                </header>
+
+                <div class="tabs" role="tablist" aria-label="리포트 탭">
+                    <a class="tab-btn" href="report-detail.html" role="tab" aria-selected="false">일간</a>
+                    <a class="tab-btn active" href="report-detail-week.html" role="tab" aria-selected="true">주간</a>
+                </div>
+
+                <div class="detail-container">
+                    <div class="report-content-wrapper">
+                        <section class="summary-grid-layout">
+                            <div class="report-box uniformity">
+                                <div class="label-row">생육 균일도 <span class="badge green">양호</span></div>
+                                <div class="value-row">8<span class="unit">%</span></div>
+                                <p class="desc-row">지난 7일 평균 편차 8%로 안정적입니다.</p>
+                            </div>
+
+                            <div class="stack-column">
+                                <div class="stack-item blue"><span>수질</span> <strong>1.6 dS/m</strong></div>
+                                <div class="stack-item white"><span>산도</span> <strong>6.4 pH</strong></div>
+                                <div class="stack-item white"><span>용존산소</span> <strong>4.8 mg/L</strong></div>
+                            </div>
+
+                            <div class="report-box goal-box">
+                                <div class="label-row2">수확 목표 달성률 <span class="badge lightblue">품질최상</span></div>
+                                <div class="value-row2">42<span class="unit">%</span></div>
+                            </div>
+
+                            <div class="report-box judgment-box">
+                                <span class="judg-label">종합판단</span><br>
+                                <p class="judg-text"><span class="judg-em">지난 1주간 수질·광환경은 안정적이었고,<br>습도 변동이 커서 환기/제습 루틴 점검이 필요합니다.</span></p>
+                                <div class="judg-icon"></div>
+                            </div>
+
+                            <div class="report-box env1">
+                                <span class="label">광환경</span><br>
+                                <span class="badge green">골든타임 확보</span>
+                                <div class="value">92<span class="unit">%</span></div>
+                            </div>
+                            <div class="report-box env2">
+                                <span class="label">온도</span><br>
+                                <span class="sub-label">적정 범위 상회</span>
+                                <div class="value">24<span class="unit">%</span></div>
+                            </div>
+                            <div class="report-box env3 env-hum">
+                                <span class="label">습도</span>
+                                <span class="badge red-light">위험</span>
+                                <div class="value danger">82<span class="unit">%</span></div>
+                            </div>
+                        </section>
+
+                        <section class="chart-list-area" style="margin-top: 50px;">
+                            <div class="chart-container">
+                                <h3 style="margin: 0;">예측 생육 곡선</h3>
+                                <div class="chart-box"></div>
+                            </div>
+                            <div class="arrow-down"><img src="./assets/icon/report-arrow.svg" alt="down"></div>
+                            <div class="chart-container">
+                                <h3 style="margin: 0;">수질산도 및 전기전도도</h3>
+                                <div class="chart-box"></div>
+                            </div>
+                            <div class="arrow-down"><img src="./assets/icon/report-arrow.svg" alt="down"></div>
+                            <div class="chart-container">
+                                <h3 style="margin: 0;">수온과 용존산소</h3>
+                                <div class="chart-box"></div>
+                            </div>
+                            <div class="arrow-down"><img src="./assets/icon/report-arrow.svg" alt="down"></div>
+                            <div class="chart-container">
+                                <h3 style="margin: 0;">온도와 습도</h3>
+                                <div class="chart-box"></div>
+                            </div>
+                            <div class="arrow-down"><img src="./assets/icon/report-arrow.svg" alt="down"></div>
+                            <div class="chart-container">
+                                <h3 style="margin: 0;">조도</h3>
+                                <div class="chart-box"></div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <aside class="side-nav-column">
+                    </aside>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/alert-modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/report-detail.js"></script>
+</body>
+
+</html>

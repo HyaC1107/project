@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Monitoring - CodePonics</title>
+    <link rel="stylesheet" href="css/monitoring.css">
+    <link rel="stylesheet" href="css/alert-modal.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script type="module" src="js/monitoring.js"></script>
+</head>
+
+<body class="alert-modal-fullscreen">
+    <div class="canvas">
+        <nav class="sidebar" aria-label="사이드바">
+            <div class="simbol-row">
+                <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+                <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+            </div>
+
+            <div class="profile">
+                <img src="./assets/images/profile.svg" alt="profile">
+                <div class="profile-name">-</div>
+            </div>
+
+            <nav class="menu" aria-label="메뉴">
+                <a class="menu-item" href="dashboard.html"><img src="./assets/icon/menu icon1_off.svg" alt="icon">대시보드</a>
+                <a class="menu-item active" href="monitoring.html"><img src="./assets/icon/menu icon2_on.svg" alt="icon">모니터링</a>
+                <a class="menu-item" href="report-list.html"><img src="./assets/icon/menu icon3_off.svg" alt="icon">리포트</a>
+                <a class="menu-item" href="diary-list.html"><img src="./assets/icon/menu icon4_off.svg" alt="icon">성장 일지</a>
+                <a class="menu-item" href="settings-main.html"><img src="./assets/icon/menu icon5_off.svg" alt="icon">시스템 설정</a>
+            </nav>
+
+            <a class="logout" href="index.html">로그아웃 →</a>
+        </nav>
+
+        <main class="main" aria-label="콘텐츠">
+            <div class="main-inner">
+                <div class="top-icons" aria-label="알림">
+                    <div class="alert-pill" aria-label="위험 알림">
+                        <img src="./assets/icon/card_icon_danger.svg" alt="" class="alert-pill__icon" aria-hidden="true">
+                        <span class="alert-pill__text">ZoneB 수온주의!</span>
+                    </div>
+                    <a class="bell-link" href="alert-history.html" style="background-color: aliceblue;">
+                        <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+                    </a>
+                </div>
+
+                <header class="report-header">
+                    <h1 class="page-title">모니터링</h1>
+
+                    <div class="banner">
+                        작물이 잘 자라고 있는지 모니터링 할 수 있어요!
+                    </div>
+                </header>
+
+                <section class="camera-grid" aria-label="카메라 모니터링">
+                                       
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script type="module" src="js/alert-modal.js"></script>
+
+</html>

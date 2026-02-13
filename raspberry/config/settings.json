@@ -1,0 +1,45 @@
+{
+  "device": {
+    "serial_number": "2" 
+  },
+  "server": {
+    "url": "http://192.168.219.80:5000/api/sensors/report", 
+    "timeout": 5
+  },
+  "interval": {
+    "realtime_sec": 5,
+    "db_log_min": 15,
+    "monitor_cam_min": 5,
+    "analysis_cam_hour": 24
+  },
+  "sensors": {
+    "temp_pin": 4,
+    "dht_pin": 17,
+    "spi_bus": 0,
+    "spi_device": 0
+  },
+  "targets": {
+    "water_temp": { "min": 20.0, "max": 25.0, "optimal": 23.0 },
+    "air_temp": { "min": 18.0, "max": 25.0, "optimal": 22.0 },
+    "humidity": { "min": 50.0, "max": 70.0 },
+    "ph": { "min": 6.5, "max": 7.3, "target": 6.8 },
+    "ec": { "min": 0.8, "max": 3 },
+    "light_percent": { "min": 50.0, "max": 100.0 }
+  },
+  "actuators": {
+    "ph_pump_pin": 23,
+    "led_pin": 18, 
+    "led_threshold": 60.0,
+    "target_ph_min": 6.5,
+    "pump_duration": 3,
+    "dosing_cooldown": 60
+  },
+  "calibration": {
+    "ph_neutral_voltage": 2.00,
+    "ec_k_value": 1.0
+  },
+  "camera": {    
+    "resolution": [640, 480],
+    "quality": 85
+  }
+}

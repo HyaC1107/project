@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CodePonics</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <style>
+    a { text-decoration: none; }
+  </style>
+</head>
+
+<body>
+  <div class="canvas">
+    <div class="login">
+      <div class="login__main">
+        <section class="login__copy" aria-label="서비스 소개 및 로그인">
+          <h1 class="login__title">
+            <span class="login__titleLine">
+              <span class="login__titleStrong">자연의 리듬이</span>
+              <span class="login__sparkle" aria-hidden="true">✦</span>
+            </span>
+            <span class="login__titleLine">
+              <span class="login__titleAccent login__titleAccent--green">데이터가</span>
+              <span class="login__titleAccent login__titleAccent--blue"> 되는 순간</span>
+            </span>
+          </h1>
+
+          <p class="login__desc">
+            아쿠아포닉스 농장관리에 필요한<br />
+            모든 것을 지원해 드릴게요
+          </p>
+
+          <div class="login__actions" role="group" aria-label="간편 로그인">
+            <a href="http://localhost:5000/api/auth/naver" class="loginBtn loginBtn--naver">
+              <span class="loginBtn__icon loginBtn__icon--naver" aria-hidden="true">
+                <img class="loginBtn__logo" src="./assets/icon/index_naver.png" alt="" />
+              </span>
+              <span class="loginBtn__label">네이버 로그인</span>
+            </a>
+
+            <a href="http://localhost:5000/api/auth/kakao" class="loginBtn loginBtn--kakao">
+              <span class="loginBtn__icon loginBtn__icon--kakao" aria-hidden="true">
+                <img class="loginBtn__logo" src="./assets/icon/index_kakao.png" alt="" />
+              </span>
+              <span class="loginBtn__label">카카오 로그인</span>
+            </a>
+
+            <a href="http://localhost:5000/api/auth/google" class="loginBtn loginBtn--google">
+              <span class="loginBtn__icon" aria-hidden="true">
+                <img class="loginBtn__logo" src="./assets/icon/Google Logo.svg" alt="" />
+              </span>
+              <span class="loginBtn__label">구글 로그인</span>
+            </a>
+          </div>
+        </section>
+
+        <div class="login__visual" aria-hidden="true">
+          <div class="login__visualFrame">
+            <img class="login__visualImg" src="./assets/images/index_visual.png" alt="" />
+            <div class="login__visualBrand">
+              <img class="login__indexLogo" src="./assets/logo/index logo.png" alt="CodePonics" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

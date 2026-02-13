@@ -1,0 +1,24 @@
+# 1. 보안 파일 (절대 금지! 🤫)
+.env
+*.pem
+*.key
+
+# 2. 너무 무거운 라이브러리 폴더 (명령어로 설치 가능하니까요!)
+node_modules/
+dist/
+
+# 3. 운영체제 및 에디터 관련 쓰레기 파일
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 4. 로그 및 임시 파일
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# 5. DB 관련 (로컬 DB 파일이 있는 경우)
+*.sqlite

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Report List - CodePonics</title>
+    <link rel="stylesheet" href="css/diary-view-start.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/alert-modal.css">
+</head>
+
+<body class="alert-modal-fullscreen">
+    <div class="canvas">
+        <nav class="sidebar">
+            <div class="simbol-row">
+                <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+                <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+            </div>
+
+            <div class="profile">
+                <img src="./assets/images/profile.svg" alt="profile">
+                <div class="profile-name">-</div> 
+            </div>
+
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html"><img src="./assets/icon/menu icon1_off.svg" alt="icon">대시보드</a>
+                <a class="menu-item" href="monitoring.html"><img src="./assets/icon/menu icon2_off.svg" alt="icon">모니터링</a>
+                <a class="menu-item" href="report-list.html"><img src="./assets/icon/menu icon3_off.svg" alt="icon">리포트</a>
+                <a class="menu-item active" href="diary-list.html"><img src="./assets/icon/menu icon4_on.svg" alt="icon">성장 일지</a>
+                <a class="menu-item" href="settings-main.html"><img src="./assets/icon/menu icon5_off.svg" alt="icon">시스템 설정</a>
+            </nav>
+
+            <a class="logout" href="index.html">로그아웃 →</a>
+        </nav>
+
+        <main class="main">
+            <div class="main-inner">
+                <header class="diary-header">
+                    <div class="diary-title-row">
+                        <a class="back" href="diary-history.html" aria-label="뒤로가기">
+                            <img src="./assets/icon/back-black.png" alt="" aria-hidden="true" class="back-icon">
+                        </a>
+                        <h1 class="diary-title"> 성장일지</h1>
+                    </div>
+                    <a class="bell-link" href="alert-history.html" style="background-color: aliceblue;">
+            <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+        </a>
+                </header>
+
+                <div class="diary-banner">식물과 물고기가 서로를 돕는 아쿠아포닉스 생태계가 오늘도 평화롭습니다.<br>성장을 지켜보는 기쁨을 기록해 보세요!</div>
+
+                <section class="diary-content">
+                    <div class="diary-carousel">
+                        <div class="swiper diary-main">
+                            <div class="swiper-wrapper">
+                                
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+
+                        <div class="swiper diary-thumbs">
+                            <div class="swiper-wrapper">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <article class="diary-text" id="diaryText">
+                        <div class="diary-tags">
+                            <span id="tags1">🥬 </span>
+                            <span id="tags2">🐟 </span>
+                        </div>
+                        <h2 id="diaryTitle">로딩중</h2>
+                        <p id="diaryBody1">-</p>
+                        <p id="diaryBody2">-</p>
+                        <p id="diaryBody3">-</p>
+                    </article>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="js/diary-view-start.js"></script>
+    <script type="module" src="js/alert-modal.js"></script>
+    <!-- <script>
+        const params = new URLSearchParams(window.location.search);
+        const zone = params.get('zone');
+        const crop = params.get('crop');
+        const fish = params.get('fish');
+
+        const diaryHeaderTitle = document.querySelector('.diary-title');
+        const tagEls = document.querySelectorAll('.diary-tags span');
+
+        const getPlainCropName = (cropLabel) => {
+            if (!cropLabel) return '';
+            return cropLabel.replace(/^[^A-Za-z0-9가-힣]+/g, '').trim();
+        };
+
+        const diaryContentByCrop = {
+            '바질': {
+                bannerHtml: '향긋한 바질이 하루하루 달라지고 있어요.<br>잎 색, 향, 줄기 상태를 기록해 보세요!',
+                slides: [
+                    {
+                        title: 'Day 1 바질 입양기',
+                        body1: '작은 바질 묘종을 수경 베드에 옮겨 심었다. 잎이 연하고 향이 은은하다.',
+                        body2: '뿌리는 흰색으로 깨끗하고, 물 순환도 안정적으로 돌아가는 중.',
+                        body3: '오늘은 적응 기간이라 광량을 과하지 않게 유지하고, 수온 변동만 체크했다.',
+                        imgSrc: 'assets/images/report_list2.png',
+                        imgAlt: '바질',
+                        caption: '2026.01.25 첫 세팅 완료',
+                    },
+                    {
+                        title: 'Day 4 새 잎이 올라온다',
+                        body1: '끝부분에서 새 잎이 또렷하게 올라오기 시작했다.',
+                        body2: '잎 끝이 마르지 않도록 습도와 환기 밸런스를 조절했다.',
+                        body3: '수질이 안정적이라 성장 속도가 좋다. 내일은 줄기 굵기도 비교해 봐야겠다.',
+                        imgSrc: 'assets/images/report_list3.png',
+                        imgAlt: '바질',
+                        caption: '2026.01.28 새 잎 체크',
+                    },
+                    {
+                        title: 'Day 7 향이 진해졌다',
+                        body1: '잎을 스치기만 해도 향이 더 선명하게 느껴진다.',
+                        body2: '광량을 조금 늘렸더니 잎이 단단해지고 색도 깊어졌다.',
+                        body3: '물고기 먹이 반응도 좋아서 전체 시스템이 안정된 느낌이다.',
+                        imgSrc: 'assets/images/report_list1.png',
+                        imgAlt: '바질',
+                        caption: '2026.02.02 향이 확 올라왔다',
+                    },
+                    {
+                        title: 'Day 9 가지치기 고민',
+                        body1: '윗잎이 촘촘해져서 가지치기 타이밍을 고민 중이다.',
+                        body2: '줄기 중심이 약해 보이면 지지대를 추가해 줄 계획.',
+                        body3: '이번 주는 수온과 DO를 특히 안정적으로 유지하는 게 목표다.',
+                        imgSrc: 'assets/images/report_list2.png',
+                        imgAlt: '바질',
+                        caption: '2026.02.04 가지치기 체크',
+                    },
+                    {
+                        title: 'Day 11 잎 상태 양호',
+                        body1: '잎이 탄력 있고 색이 균일하다. 스트레스 징후가 거의 없다.',
+                        body2: '환기를 조금 늘려도 처짐이 없어서 컨디션이 안정적이다.',
+                        body3: '다음 기록 때는 잎 크기와 마디 간격을 수치로 남겨봐야겠다.',
+                        imgSrc: 'assets/images/report_list3.png',
+                        imgAlt: '바질',
+                        caption: '2026.02.06 컨디션 안정',
+                    },
+                ],
+            },
+        };
+
+        const applyDiaryContent = (plainCropName) => {
+            const content = diaryContentByCrop[plainCropName];
+            if (!content) return;
+
+            const bannerEl = document.querySelector('.diary-banner');
+            if (bannerEl && content.bannerHtml) bannerEl.innerHTML = content.bannerHtml;
+
+            const mainSlides = document.querySelectorAll('.diary-main .swiper-slide');
+            const thumbSlides = document.querySelectorAll('.diary-thumbs .swiper-slide');
+
+            content.slides.forEach((slideData, index) => {
+                const slideEl = mainSlides[index];
+                if (slideEl) {
+                    slideEl.dataset.title = slideData.title;
+                    slideEl.dataset.body1 = slideData.body1;
+                    slideEl.dataset.body2 = slideData.body2;
+                    slideEl.dataset.body3 = slideData.body3;
+
+                    const imgEl = slideEl.querySelector('img');
+                    if (imgEl && slideData.imgSrc) {
+                        imgEl.src = slideData.imgSrc;
+                        imgEl.alt = slideData.imgAlt || '';
+                    }
+
+                    const captionEl = slideEl.querySelector('.slide-caption');
+                    if (captionEl) captionEl.textContent = slideData.caption || '';
+                }
+
+                const thumbEl = thumbSlides[index];
+                if (thumbEl) {
+                    const thumbImg = thumbEl.querySelector('img');
+                    if (thumbImg && slideData.imgSrc) {
+                        thumbImg.src = slideData.imgSrc;
+                        thumbImg.alt = `썸네일 ${index + 1}`;
+                    }
+                }
+            });
+        };
+
+        if (diaryHeaderTitle && crop) {
+            const plainCrop = getPlainCropName(crop);
+            diaryHeaderTitle.textContent = `${plainCrop || crop} 성장일지`;
+            document.title = `${plainCrop || crop} 성장일지 - CodePonics`;
+
+            applyDiaryContent(plainCrop);
+        }
+
+        if (tagEls && tagEls.length >= 1 && crop) tagEls[0].textContent = crop;
+        if (tagEls && tagEls.length >= 2 && fish) tagEls[1].textContent = fish;
+
+        const thumbsSwiper = new Swiper('.diary-thumbs', {
+            slidesPerView: 5,
+            spaceBetween: 14,
+            watchSlidesProgress: true,
+        });
+
+        const diaryTitle = document.querySelector('#diaryTitle');
+        const diaryBody1 = document.querySelector('#diaryBody1');
+        const diaryBody2 = document.querySelector('#diaryBody2');
+        const diaryBody3 = document.querySelector('#diaryBody3');
+
+        const updateDiaryText = (swiper) => {
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            if (!activeSlide) return;
+
+            diaryTitle.textContent = activeSlide.dataset.title || '';
+            diaryBody1.textContent = activeSlide.dataset.body1 || '';
+            diaryBody2.textContent = activeSlide.dataset.body2 || '';
+            diaryBody3.textContent = activeSlide.dataset.body3 || '';
+        };
+
+        const mainSwiper = new Swiper('.diary-main', {
+            spaceBetween: 0,
+            loop: false,
+            navigation: {
+                nextEl: '.diary-main .swiper-button-next',
+                prevEl: '.diary-main .swiper-button-prev',
+            },
+            pagination: {
+                el: '.diary-main .swiper-pagination',
+                clickable: true,
+            },
+            thumbs: {
+                swiper: thumbsSwiper,
+            },
+            on: {
+                init(swiper) {
+                    updateDiaryText(swiper);
+                },
+                slideChange(swiper) {
+                    updateDiaryText(swiper);
+                },
+            },
+        });
+
+        updateDiaryText(mainSwiper);
+    </script> -->
+</body>
+
+</html>

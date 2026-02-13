@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CodePonics Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/alert-modal.css">
+    <!-- 1. Socket.IO 클라이언트 라이브러리 로드 (필수) -->
+    <!-- 백엔드 서버에서 제공하는 경로입니다. -->
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+
+    <!-- 2. 메인 스크립트 로드 (type="module" 필수) -->
+    <!-- type="module"을 써야 js 파일 내부에서 import/export가 작동합니다. -->
+    <script type="module" src="./js/dashboard.js"></script>
+</head>
+
+<body class="alert-modal-fullscreen">
+
+    <div class="canvas">
+        <nav class="sidebar">
+            <div class="simbol-row">
+                <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+                <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+            </div>
+
+            <div class="profile">
+                <img src="" alt="profile">
+                <div>
+                    <div class="profile-name" id="user-name">-</div>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a class="menu-item active" href="dashboard.html"><img src="./assets/icon/menu icon1_on.svg" alt="icon">대시보드</a>
+                <a class="menu-item" href="monitoring.html"><img src="./assets/icon/menu icon2_off.svg" alt="icon">모니터링</a>
+                <a class="menu-item" href="report-list.html"><img src="./assets/icon/menu icon3_off.svg" alt="icon">리포트</a>
+                <a class="menu-item" href="diary-list.html"><img src="./assets/icon/menu icon4_off.svg" alt="icon">성장 일지</a>
+                <a class="menu-item" href="settings-main.html"><img src="./assets/icon/menu icon5_off.svg" alt="icon">시스템 설정</a>
+            </nav>
+
+            <a class="logout" href="index.html">로그아웃 →</a>
+        </nav>
+
+        <main class="main">
+            <div class="main-inner">
+                <div class="header">
+                    <h1>대시보드</h1>
+                    <div class="zone-select" id="zone-select-container">
+                        <button class="zone" id="zone-select-btn" type="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="current-zone" id="selected-device-name">기기 로딩 중...</span>
+                        </button>
+                        <div class="zone-dropdown" role="listbox" id="device-select-list" aria-label="Zone 선택">
+                            
+                        </div>
+                    </div>
+                    <!-- [NEW] 더미 기기 추가 버튼 -->
+                    <!-- <button id="btn-add-dummy" title="테스트 기기 추가" 
+                        style="width: 32px; height: 32px; border-radius: 50%; border: none; background: #2ecc71; color: white; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                        +
+                    </button> -->
+                </div>
+
+                <div class="banner" id="ai-brief-text">
+                    <!-- <div class="title">✨환영합니다!</div> -->
+                    ai가 생각중...
+                </div>
+
+                <!-- <div class="banner danger" style="display: none;">
+                    <div class="banner-text">
+                        상추들은 자리를 잘 잡았는데 수온이 28.5°C까지 올라 비상입니다! 어서 물 온도를 낮춰주세요! 🔥🥬
+                    </div>
+                    <img src="./assets/images/warning_char.png" alt="warning" class="banner-char">
+                </div> -->
+
+                <section class="section water">
+                    <h3 class="section-title">수질</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <img class="card-icon" src="./assets/icon/card icon1.svg" alt="icon">
+                            <!-- <div class="status">정상</div> -->
+                            <div class="main-value txt-main" id="val-ph">-</div>
+                            <div class="sub">수질 산도(pH)</div>
+                        </div>
+                        <div class="card warning">
+                            <img class="card-icon" src="./assets/icon/card icon2.svg" alt="icon">
+                            <!-- <div class="status">주의</div> -->
+                            <div class="main-value txt-main" id="val-ec">-</div>
+                            <div class="sub">전기전도도(mS/cm)</div>
+                        </div>
+                        <div class="card">
+                            <img class="card-icon" src="./assets/icon/card icon3.svg" alt="icon">
+                            <!-- <div class="status">정상</div> -->
+                            <div class="main-value txt-main" id="val-water-temp">-</div>
+                            <div class="sub">수온(°C)</div>
+                        </div>
+                        <div class="card">
+                            <img class="card-icon" src="./assets/icon/card icon4.svg" alt="icon">
+                            <!-- <div class="status">정상</div> -->
+                            <div class="main-value txt-main" id="val-do">-</div>
+                            <div class="sub">용존산소(mg/L)</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section crop">
+                    <h3 class="section-title">작물</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <img class="card-icon" src="./assets/icon/card icon3.svg" alt="icon">
+                            <!-- <div class="status">정상</div> -->
+                            <div class="main-value txt-main" id="val-air-temp">-</div>
+                            <div class="sub">온도(°C)</div>
+                        </div>
+                        <div class="card warning">
+                            <img class="card-icon" src="./assets/icon/card icon5.svg" alt="icon">
+                            <!-- <div class="status">주의</div> -->
+                            <div class="main-value txt-main" id="val-humidity">-</div>
+                            <div class="sub">습도(%)</div>
+                        </div>
+                        <div class="card">
+                            <img class="card-icon" src="./assets/icon/card icon6.svg" alt="icon">
+                            <!-- <div class="status">정상</div> -->
+                            <div class="main-value txt-main" id="val-lux">-</div>
+                            <div class="sub">밝기(%)</div>
+                        </div>
+                        <div class="card weather-card">
+                            <div class="weather-content">
+                                <img class="weather-icon" src="./assets/icon/weatherIcon.png" alt="날씨 아이콘">
+                                <div class="main-value">-</div>
+                                <div class="weather-day">-</div>
+                            </div>
+                            <div class="weather-info">
+                                <span>-</span>
+                                <span>-</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <aside class="right">
+    <div class="top-icons">
+        <a class="bell-link" href="alert-history.html" style="background-color: aliceblue;">
+            <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+        </a>
+        <!-- <a class="bell-link" href="alert-history.html">
+            <img src="./assets/icon/bell_notif.svg" alt="notification" class="bell-icon active">
+        </a> -->
+    </div>
+
+    <div class="ai-brief">
+        <img class="brief-char" src="./assets/images/briefing_character.png" alt="ai-char">
+        <div class="message">
+            <div class="title">✨환영합니다!</div>
+            <div class="desc">유통이 편해지는 공급 파트너
+                계획 재배 × 안정 출하 × 품질 균일<br>
+                📞 계약 상담 진행 중
+            </div>
+        </div>
+    </div>
+
+    <div class="monitor">
+        <div class="monitor-header">
+            <span class="monitor-title">모니터링</span>
+            <!-- <span class="live-indicator"><span class="dot"></span>LIVE</span> -->
+        </div>
+        <div class="cam-container">
+            <div class="monitor-track">
+                <div class="monitor-slide"><img src="./assets/images/cam1.png" id="camera-feed" alt="CAM1 화면"></div>
+            </div>
+        </div>
+        <div class="monitor-label"></div>
+    </div>
+    </div>
+</aside>
+</div>
+<script type="module" src="js/alert-modal.js"></script>
+</body>
+
+</html>

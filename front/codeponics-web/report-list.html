@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Report List - CodePonics</title>
+    <link rel="stylesheet" href="css/report-list.css">
+    <link rel="stylesheet" href="css/alert-modal.css">
+</head>
+
+<body class="alert-modal-fullscreen">
+    <div class="canvas">
+        <nav class="sidebar">
+            <div class="simbol-row">
+                <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+                <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+            </div>
+
+            <div class="profile">
+                <img src="./assets/images/profile.svg" alt="profile">
+                <div class="profile-name">-</div>
+            </div>
+
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html"><img src="./assets/icon/menu icon1_off.svg" alt="icon">대시보드</a>
+                <a class="menu-item" href="monitoring.html"><img src="./assets/icon/menu icon2_off.svg" alt="icon">모니터링</a>
+                <a class="menu-item active" href="report-list.html"><img src="./assets/icon/menu icon3_on.svg" alt="icon">리포트</a>
+                <a class="menu-item" href="diary-list.html"><img src="./assets/icon/menu icon4_off.svg" alt="icon">성장 일지</a>
+                <a class="menu-item" href="settings-main.html"><img src="./assets/icon/menu icon5_off.svg" alt="icon">시스템 설정</a>
+            </nav>
+
+            <a class="logout" href="index.html">로그아웃 →</a>
+        </nav>
+
+        <main class="main">
+            <div class="main-inner">
+                <div class="top-icons" aria-label="알림">
+                    <a class="bell-link" href="alert-history.html" style="background-color: aliceblue;">
+            <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+        </a>
+                </div>
+                <header class="report-header">
+                    <h1 class="page-title">모듈 별 리포트</h1>
+                    
+                    <div class="banner">우리 농장 가족들의 컨디션을 체크해 보세요! <br>식물과 물고기가 서로 도와가며 잘 지내고 있을까요?</div>
+                </header>
+
+                <section class="report-main">
+                    <section class="cards-row">
+                        <article class="card selected">
+                            <a class="card-link" href="report-detail.html">
+                                <div class="photo">
+                                    <img src="assets/images/report_list1.png" alt="plant">
+                                    <div class="card-badges">
+                                        <div class="zone-badge">ZoneA</div>
+                                        <div class="dday-badge">D-15</div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="crop-headline">🥬 상추</div>
+                                    <div class="fish-headline">🐟 향어</div>
+                                    <div class="harvest-headline">📅 수확 예정일 <span class="harvest-date">2월 17일</span></div>
+
+                                    <div class="gauge-wrapper">
+                                        <div class="gauge-info">
+                                            <span class="gauge-percent">45% 성장</span>
+                                        </div>
+                                        <div class="gauge-bar">
+                                            <div class="fill" style="width:121px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="card">
+                            <a class="card-link" href="report-detail.html">
+                                <div class="photo">
+                                    <img src="assets/images/report_list2.png" alt="basil">
+                                    <div class="card-badges">
+                                        <div class="zone-badge">ZoneB</div>
+                                        <div class="dday-badge">D-30</div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="crop-headline">🌿 바질</div>
+                                    <div class="fish-headline">🐟 틸라피아</div>
+                                    <div class="harvest-headline">📅 수확 예정일 <span class="harvest-date">3월 4일</span></div>
+
+                                    <div class="gauge-wrapper">
+                                        <div class="gauge-info">
+                                            <span class="gauge-percent">15% 성장</span>
+                                        </div>
+                                        <div class="gauge-bar">
+                                            <div class="fill" style="width:40px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </section>
+
+                    <footer class="pagination" style="position:relative; bottom: -210px;">
+                        <div class="prev">이전</div>
+                        <div class="page-number active">1</div>
+                        <div class="page-number">2</div>
+                        <div class="page-number">3</div>
+                        <div class="page-number ">4</div>
+                        <div class="page-number">5</div>
+                        <div class="next">다음</div>
+                    </footer>
+                </section> </div>
+        </main>
+    </div>
+    <script type="module" src="js/alert-modal.js"></script>
+    <script type="module" src="js/report-list.js"></script>
+</body>
+
+
+</html>

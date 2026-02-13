@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CodePonics</title>
+    <link rel="stylesheet" href="css/report-detail.css">
+    <link rel="stylesheet" href="css/alert-modal.css">
+    <style>
+        .chart-box{
+            margin-bottom: 30px;
+        }
+        #llm-report-text{
+            white-space: pre-wrap; /* \n 문자열을 실제 줄바꿈으로 보여줍니다! */
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body class="alert-modal-fullscreen">
+    <div class="canvas">
+        <nav class="sidebar">
+            <div class="simbol-row">
+                <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+                <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+            </div>
+            <div class="profile">
+                <img src="./assets/images/profile.svg" alt="profile">
+                <div class="profile-name">-</div>
+            </div>
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html"><img src="./assets/icon/menu icon1_off.svg" alt="icon">대시보드</a>
+                <a class="menu-item" href="monitoring.html"><img src="./assets/icon/menu icon2_off.svg" alt="icon">모니터링</a>
+                <a class="menu-item active" href="report-list.html"><img src="./assets/icon/menu icon3_on.svg" alt="icon">리포트</a>
+                <a class="menu-item" href="diary-list.html"><img src="./assets/icon/menu icon4_off.svg" alt="icon">성장 일지</a>
+                <a class="menu-item" href="settings-main.html"><img src="./assets/icon/menu icon5_off.svg" alt="icon">시스템 설정</a>
+            </nav>
+            <a class="logout" href="index.html">로그아웃 →</a>
+        </nav>
+
+        <main class="main">
+            <div class="main-inner" style="width: 90%; padding-left: 50px;">
+                <header class="report-header">
+                    <div class="header-top">
+                        <div class="title-left">
+                            <a class="back" href="report-list.html" aria-label="뒤로가기">
+                                <img src="./assets/icon/back-arrow.svg" alt="" aria-hidden="true" />
+                            </a>
+                            <h1 class="page-title">일간 분석 리포트</h1>
+                        </div>
+                        <a class="bell-link" href="alert-history.html" style="background-color: aliceblue;">
+            <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+        </a>
+                    </div>
+                </header>
+
+                <div class="tabs" role="tablist" aria-label="리포트 탭">
+                    <button class="tab-btn active" id="tab-day" data-type="day">일간</button>
+                    <button class="tab-btn" id="tab-week" data-type="week">주간</button>
+                </div>
+
+                <div class="report-tab-content is-active">
+                <div class="detail-container">
+                    <div class="report-content-wrapper" >
+                        <section class="report-box"> 
+                            <span class="judg-label">종합판단</span><br>
+                            <div class="judg-content">
+                                <p class="judg-text">
+                                    <span class="judg-em" id="llm-report-text">
+                                        데이터를 분석하고 리포트를 생성 중입니다...
+                                    </span>
+                                </p>
+                            </div>
+                        </section>
+
+                        <section class="chart-list-area">
+                            <div class="chart-box"><canvas id="chart-growth"></canvas></div>
+
+                            <div class="chart-box"><canvas id="chart-ph-ec"></canvas></div>
+
+                            <div class="chart-box"><canvas id="chart-water"></canvas></div>
+
+                            <div class="chart-box"><canvas id="chart-air"></canvas></div>
+
+                            <div class="chart-box"><canvas id="chart-lux"></canvas></div>
+                        </section>
+                    </div>
+
+                    <aside class="side-nav-column">
+                        </aside>
+                </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="js/alert-modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/report-detail.js"></script>
+</body>
+
+
+</html>

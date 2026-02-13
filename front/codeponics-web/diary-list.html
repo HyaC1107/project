@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Report List - CodePonics</title>
+    <link rel="stylesheet" href="css/diary-list.css">
+    <link rel="stylesheet" href="css/alert-modal.css">
+</head>
+
+<body class="alert-modal-fullscreen">
+    <div class="canvas">
+        <nav class="sidebar">
+            <div class="simbol-row">
+                <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+                <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+            </div>
+
+            <div class="profile">
+                <img src="./assets/images/profile.svg" alt="profile">
+                <div class="profile-name" id="user-nickname">어부의텃밭</div>
+            </div>
+
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html"><img src="./assets/icon/menu icon1_off.svg" alt="icon">대시보드</a>
+                <a class="menu-item" href="monitoring.html"><img src="./assets/icon/menu icon2_off.svg" alt="icon">모니터링</a>
+                <a class="menu-item" href="report-list.html"><img src="./assets/icon/menu icon3_off.svg" alt="icon">리포트</a>
+                <a class="menu-item active" href="diary-list.html"><img src="./assets/icon/menu icon4_on.svg" alt="icon">성장 일지</a>
+                <a class="menu-item" href="settings-main.html"><img src="./assets/icon/menu icon5_off.svg" alt="icon">시스템 설정</a>
+            </nav>
+
+            <a class="logout" href="index.html">로그아웃 →</a>
+        </nav>
+
+        <main class="main">
+            <div class="main-inner">
+                <div class="top-icons" aria-label="알림">
+                    <a class="bell-link" href="alert-history.html" style="background-color: aliceblue;">
+            <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+        </a>
+                </div>
+                <header class="report-header">
+                    <h1 class="page-title"> 성장일지 </h1>
+                    
+                    <div class="banner">그동안 정성껏 키워낸 기록들이에요. <br>
+                        각 수확 시점별 성장 일지를 통해 우리 농장의 추억을 확인해 보세요!</div>
+                </header>
+
+                <section class="report-main">
+                    <section class="cards-row">
+                    </section>
+                    <footer class="pagination" id="diary-pagination" style="position:relative; bottom: -210px;">
+                    </footer>
+                </section> </div>
+        </main>
+    </div>
+</body>
+
+<script type="module" src="js/alert-modal.js"></script>
+<script type="module" src="js/diary-list.js"></script>
+
+</html>

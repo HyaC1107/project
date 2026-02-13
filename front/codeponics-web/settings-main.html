@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>시스템 설정</title>
+  <link rel="stylesheet" href="css/alert-modal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  
+
+  <style>
+    :root{
+      --bg:#f4f6f9;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e7edf4;
+      --shadow: 0 10px 24px rgba(15,23,42,.08);
+      --radius:18px;
+
+      --blue1:#071b3a;
+      --blue2:#0b56c3;
+      --active:#25b3ff;
+
+      --danger:#fb2c36;
+      --primary:#2b8cff;
+      --success:#28c48b;
+    }
+
+    *{box-sizing:border-box}
+    body {
+        font-family: 'Pretendard';
+        background: #061A33; 
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .canvas{
+      width:1500px;
+      height:940px;
+      margin:0 auto;
+      background:#fff;
+      display:grid;
+      grid-template-columns: 238px 1fr;
+      gap:20px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* ===== 사이드바 ===== */
+    .sidebar{
+      width:238px;
+      padding:25px 18px 10px 18px;
+      color:#fff;
+      background: linear-gradient(180deg, #080808 0%, #1C82FD 100%);
+      position:relative;
+      height:100%;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      display:flex;flex-direction:column;gap:20px;
+    }
+    .simbol-row{display:flex;align-items:center;gap:10px;margin-top:15px;margin-bottom:12px;}
+    .symbol-img{width:50px;height:auto;object-fit:contain;filter:brightness(1.1)}
+    .logo-img{width:130px;height:auto;object-fit:contain;filter:brightness(1.1)}
+    .profile{ display:flex; align-items:center; gap:12px; background:#fff; padding:10px; border-radius:14px; }
+    .profile img{ width:48px; height:48px; border-radius:10px; }
+    .profile-name{ font-weight:800; font-size:22px; color:#000; line-height:1; }
+    .menu{ margin-top:18px; display:flex; flex-direction:column; gap:18px; }
+    .menu-item{ color:#fff; font-weight:600; font-size:22px; display:flex; align-items:center; gap:10px; padding:6px 4px; text-decoration: none;}
+    .menu-item img{ width:20px; height:20px; }
+    .menu-item.active{ color:#00D8FF; }
+    .logout{ margin-top:auto; margin-bottom:30px; color:#cfe7ff; font-size:22px; opacity:0.8; cursor:pointer; display:block; text-align:center; width:100%; text-decoration: none; }
+
+    .page{flex:1;padding:30px 36px 60px 36px;overflow:hidden;}
+    .page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+    .page-header h1{margin:0;font-size:28px;letter-spacing:-.6px;color:#111827;font-weight:900;}
+    .bell{
+      width:44px;height:44px;border-radius:14px;background:#fff;border:1px solid var(--line);
+      box-shadow: 0 8px 18px rgba(15,23,42,.06);display:grid;place-items:center;position:relative;
+      cursor:pointer;
+      transition:transform .08s ease, box-shadow .12s ease;
+    }
+    .bell::after{content:"";position:absolute;right:10px;top:10px;width:8px;height:8px;border-radius:50%;background: var(--danger);}
+    .bell svg{width:20px;height:20px;opacity:.85}
+    .bell:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(15,23,42,.12)}
+    .bell:active{transform:translateY(0)}
+    .bell:focus{outline:3px solid rgba(43,140,255,.18);outline-offset:3px}
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap: 22px;
+      align-items:start;
+    }
+    .left-column,.right-column{display:flex;flex-direction:column;gap:18px;min-height:0}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding:20px;
+    }
+
+    .system-card .subcard{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff;}
+    .subcard-title{font-weight:900;letter-spacing:-.3px;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+    .muted{font-weight:700;color:var(--muted);font-size:13px;}
+    .row-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+    .field-label{display:block;font-weight:900;color:#0f172a;margin-bottom:8px;}
+    .range-inputs{display:grid;grid-template-columns:1fr 40px 1fr;gap:10px;align-items:center;}
+    .range-inputs input{
+      height:54px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:0 14px;
+      font-size:18px;font-weight:800;color:#111827;outline:none;
+    }
+    .range-inputs input:focus{border-color: rgba(43,140,255,.8);box-shadow: 0 0 0 4px rgba(43,140,255,.12);}
+    .sep{text-align:center;font-weight:900;color:#94a3b8;}
+
+    .module-card h3{margin:0 0 14px 0;font-size:18px;font-weight:900;letter-spacing:-.3px;}
+    .module-list{list-style:none;padding:6px 0;margin:0;display:flex;flex-direction:column;gap:12px;}
+    .chk{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:14px;}
+    .chk input[type="checkbox"]{width:20px;height:20px;accent-color:#2b8cff;transform:translateY(1px);}
+    .label-text{width:120px;font-weight:900;color:#111827;}
+    .tag{font-weight:900;color:#111827;display:flex;align-items:center;gap:8px;}
+    
+
+    .card-actions{display:flex;gap:14px;margin-top:16px;}
+    .btn{
+      height:52px;border-radius:14px;padding:0 16px;font-weight:900;border:1px solid var(--line);
+      background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;flex:1;
+    }
+    .btn-delete{border-color: rgba(251,44,54,.55); color: var(--danger); background: rgba(251,44,54,.04)}
+    .btn-edit{border-color: rgba(43,140,255,.55); color: var(--primary); background: rgba(43,140,255,.04)}
+    .btn-add{border-color: rgba(40,196,139,.55); color: var(--success); background: rgba(40,196,139,.05)}
+
+    .profile-card .profile-head{display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+    .avatar{
+      width:54px;height:54px;border-radius:50%;
+      background:url("./assets/images/profile.svg") center/cover no-repeat, #e2e8f0;
+      border:1px solid var(--line);box-shadow:0 10px 18px rgba(15,23,42,.08);
+    }
+    .profile-info .name{font-weight:900;letter-spacing:-.2px;font-size:16px;color:#111827;line-height:1.1;}
+    .profile-info .email{font-weight:800;color:var(--muted);font-size:13px;margin-top:2px;}
+
+    .farm-card h3{margin:0 0 12px 0;font-size:18px;font-weight:900;letter-spacing:-.3px;}
+    .farm-info{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin-bottom:14px;}
+    .farm-info strong{display:block;font-size:12px;color:var(--muted);font-weight:900;margin-bottom:6px;}
+    .farm-info > div > div{font-weight:900;color:#111827;}
+    .tags{color:#111827;font-weight:900;line-height:1.35;}
+
+    .farm-controls{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+    .row{display:flex;justify-content:flex-start;}
+    .row.center{justify-content:center;}
+    .btn-download{
+      width:180px;height:46px;border-radius:12px;border:1px solid var(--line);
+      background:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;
+    }
+    .btn-danger{
+      width:220px;height:50px;border-radius:12px;border:1px solid rgba(251,44,54,.55);
+      background: rgba(251,44,54,.04);color:var(--danger);font-weight:900;
+      display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;margin-top:6px;
+    }
+
+    .reset-overlay{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background: rgba(0,0,0,.55);
+      z-index: 10000;
+    }
+    .reset-overlay.is-open{display:flex;}
+
+    .reset-modal{
+      width: 546px;
+      height: 275px;
+      max-width: calc(100vw - 40px);
+      background:#fff;
+      border-radius: 14px;
+      box-shadow: 0 20px 80px rgba(2,6,23,0.28);
+      padding: 18px 22px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    .reset-modal .reset-title,
+    .reset-modal .reset-desc{
+      color: #101828;
+      text-align: center;
+      font-family: Pretendard, 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 26px;
+      margin: 0;
+    }
+
+    .reset-body{
+      flex:1 1 auto;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      padding-top:6px;
+      box-sizing:border-box;
+    }
+
+    .reset-actions{
+      display:flex;
+      justify-content:center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .reset-btn{
+      min-width: 140px;
+      height: 44px;
+      border-radius: 10px;
+      border:0;
+      font-weight:900;
+      font-size:15px;
+      cursor:pointer;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    }
+
+    #addOverlay{z-index:10001}
+    .add-modal{
+      width:360px;
+      max-width: calc(100vw - 40px);
+      background:#fff;
+      border-radius:14px;
+      padding:18px 18px 14px;
+      box-shadow: 0 20px 60px rgba(2,6,23,0.2);
+      display:flex;flex-direction:column;gap:8px;
+      box-sizing:border-box;
+    }
+    .add-head{display:flex;align-items:center;justify-content:center}
+    .add-body{display:flex;flex-direction:column;gap:8px;padding-top:4px}
+    .add-input{height:40px;border-radius:10px;border:1px solid var(--line);padding:8px 10px;font-weight:800}
+    .add-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}
+    .reset-btn.cancel{background:#f3f4f6;color:#111827;border:1px solid #e6e9ef}
+    .reset-btn.confirm{background:#1f7aff;color:#fff}
+
+    body.modal-open{overflow:hidden;}
+  </style>
+</head>
+
+<body>
+  <div class="canvas">
+    <nav class="sidebar">
+      <div class="simbol-row">
+        <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+        <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+      </div>
+
+      <div class="profile">
+        <img src="./assets/images/profile.svg" alt="profile">
+        <div><div class="profile-name">어부의텃밭</div></div>
+      </div>
+
+      <nav class="menu">
+        <!-- 요구사항: 클릭 시 각각 지정한 파일로 이동 -->
+        <a class="menu-item" href="dashboard.html"><img src="./assets/icon/menu icon1_off.svg" alt="icon">대시보드</a>
+        <a class="menu-item" href="monitoring.html"><img src="./assets/icon/menu icon2_off.svg" alt="icon">모니터링</a>
+        <a class="menu-item" href="report-list.html"><img src="./assets/icon/menu icon3_off.svg" alt="icon">리포트</a>
+        <a class="menu-item" href="diary-list.html"><img src="./assets/icon/menu icon4_off.svg" alt="icon">성장 일지</a>
+        <a class="menu-item active" href="settings-main.html"><img src="./assets/icon/menu icon5_on.svg" alt="icon">시스템 설정</a>
+      </nav>
+
+      <a class="logout" href="index.html">로그아웃 →</a>
+    </nav>
+
+    <div class="page">
+      <header class="page-header">
+        <h1>시스템 설정</h1>
+        <a class="bell-link" href="alert-history.html" style="background-color: aliceblue;">
+            <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+        </a>
+      </header>
+
+      <main class="layout">
+        <div class="left-column">
+          <section class="card module-card" id="moduleCard">
+            <h3>모듈 설정</h3>
+
+            <ul class="module-list">
+              <li data-serial="" data-fish="" data-location="">
+                <label class="chk">
+                  <input type="checkbox" checked>
+                  <span class="label-text">Zone A</span>
+                  <span class="tag"> 상추</span>
+                </label>
+              </li>
+              <li data-serial="" data-fish="" data-location="">
+                <label class="chk">
+                  <input type="checkbox">
+                  <span class="label-text">Zone B</span>
+                  <span class="tag">바질</span>
+                </label>
+              </li>
+              <li data-serial="" data-fish="" data-location="">
+                <label class="chk">
+                  <input type="checkbox">
+                  <span class="label-text">Zone C</span>
+                  <span class="tag">케일</span>
+                </label>
+              </li>
+            </ul>
+
+            <div class="card-actions">
+              <button class="btn btn-delete" type="button">수확하기 & 데이터 삭제</button>
+              <button class="btn btn-edit" type="button">수정하기</button>
+              <button class="btn btn-add" type="button">추가하기</button>
+            </div>
+          </section>
+        </div>
+
+        <aside class="right-column">
+          <div class="card profile-card">
+            <div class="profile-head">
+              <img src="./assets/images/profile.svg" alt="profile" id="profile-img" style="width: 60px;">
+              <div class="profile-info">
+                <div class="name">-</div>
+                <div class="email">-</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card farm-card">
+            <h3>농장관리</h3>
+            <div class="farm-info">              
+              <div><strong>농장 시작일</strong><div id="user_start">2026-01-01</div></div>
+              <div><strong>보유중인 모듈</strong>
+                <div id="my_module_names" style="color: #64748b; font-size: 0.9em; margin-top: 4px;">
+                  로딩 중...
+                </div>
+              </div>
+            </div>
+
+            <div class="farm-controls">
+              <div class="row">
+                <button class="btn-download" type="button">엑셀 다운로드</button>
+              </div>
+
+              <div class="row center">
+                <button class="btn-danger" type="button" id="farmResetBtn">농장 데이터 초기화</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </div>
+
+  <div class="reset-overlay" id="resetOverlay" aria-hidden="true">
+    <div class="reset-modal" role="dialog" aria-modal="true" aria-labelledby="resetTitle">
+      <div class="reset-body">
+        <h2 class="reset-title" id="resetTitle">
+          잠깐! 농장의 모든 기록이 사라집니다!<br>
+          초기화 시 지금까지 기록된 모든 작물 정보와<br>
+          설정이 삭제되며 이 작업은 되돌릴 수 없습니다.
+        </h2>
+        <p class="reset-desc"></p>
+      </div>
+
+      <div class="reset-actions">
+        <button type="button" class="reset-btn cancel" id="resetCancelBtn">취소</button>
+        <button type="button" class="reset-btn confirm" id="resetConfirmBtn">초기화하기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="reset-overlay" id="addOverlay" aria-hidden="true">
+    <div class="add-modal" role="dialog" aria-modal="true" aria-labelledby="addTitle">
+      <div class="add-head">
+        <img src="./assets/logo/logo.svg" alt="CodePonics" style="height:28px;margin-bottom:6px;">
+      </div>
+
+      <div class="add-body">
+        <label class="field-label">기기 시리얼 No.</label>
+        <input id="moduleSerial" class="add-input" type="text" placeholder="">
+
+        <label class="field-label">기기명</label>
+        <input id="moduleName" class="add-input" type="text" placeholder="">
+
+        <label class="field-label">재배 작물</label>
+        <select id="moduleCrop" class="add-input">
+          <option value=" 상추">상추</option>
+          <option value="바질">바질</option>
+          <option value="케일">케일</option>
+        </select>
+
+        <label class="field-label">어종</label>
+        <select id="moduleFish" class="add-input">
+          <option value="메기">메기</option>
+          <option value="향어">향어</option>
+          <option value="잉어">잉어</option>
+          <option value="틸라피아">틸라피아</option>
+        </select>
+        <label class="field-label">재배 시작일</label>
+        <input id="moduleStartedAt" class="add-input" type="date">
+        <label class="field-label">설치위치</label>
+        <input id="moduleLocation" class="add-input" type="text" placeholder="예) 실내 농장">
+      </div>
+
+      <div class="add-actions">
+        <button type="button" class="reset-btn cancel" id="addCancelBtn">취소</button>
+        <button type="button" class="reset-btn confirm" id="addSaveBtn">저장</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script type="module" src="js/alert-modal.js"></script>
+  <script type="module" src="js/settings-main.js"></script>
+</body>
+</html>

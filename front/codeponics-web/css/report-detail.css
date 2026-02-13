@@ -1,0 +1,587 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+    --primary: #1C80F9;
+    --danger: #FB2C36;
+    --neutral: #B2B7BE;
+    --text-dark: #364153;
+    --background: var(--bg);
+    /* Typography variables for right-side boxes (adjust as needed) */
+    --box-title-size: 16px;
+    --box-title-weight: 800;
+    --box-value-size: 40px;
+    --box-value-weight: 900;
+    --box-desc-size: 20px;
+    --box-small-value-size: 20px;
+    /* judgment text (종합판단 텍스트) */
+    --judg-text-size: 16px;
+    --judg-text-weight: 600;
+    
+    /* goal box value color */
+    --value-row2-color: #fff;
+        /* 24px 값(예: .stack-item strong) 색상 */
+        --stack-value-color: #071827;
+    /* goal percent bottom offset (controls how far from box bottom the 35% sits) */
+    --goal-percent-bottom: 10px;
+        /* goal percent right offset (controls horizontal position) */
+        --goal-percent-right: 20px;
+
+        /* env1 (광환경) badge offset (can be positive px to push down) */
+        --env1-badge-offset: 20px;
+
+        /* env3 value anchor offsets */
+        --env3-value-right: 16px;
+        --env3-value-bottom: 12px;
+
+        /* judgment box size variables */
+        --judg-width: 585px;
+        --judg-height: 164px;
+    
+}
+
+html, body { height: 100%; margin: 0; font-family: 'Pretendard';}
+::-webkit-scrollbar { display: none; }
+body {
+    font-family: 'Pretendard';
+    background: #061A33; 
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -ms-overflow-style: none;
+}
+
+* { box-sizing: border-box; }
+
+
+/* 2단 그리드 레이아웃 */
+.canvas {
+    width: 1500px;
+    height: 940px;
+    display: grid;
+    grid-template-columns: 238px 1fr;
+    gap: 20px;
+    --background: var(--bg); 
+    overflow: hidden;
+}
+
+/* Sidebar (왼쪽) */
+.sidebar {
+    width: 238px;
+    padding: 25px 18px 10px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: linear-gradient(180deg, #080808 0%, #1C82FD 100%);
+    height: 100%;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.simbol-row { display:flex; align-items:center; gap:10px; margin-top:15px; margin-bottom:12px; }
+.symbol-img{ width:50px; height:auto; }
+.logo-img{ width:130px; height:auto; object-fit:contain; }
+.profile{ display:flex; align-items:center; gap:12px; background:#fff; padding:10px; border-radius:14px; }
+.profile img{ width:48px; height:48px; border-radius:10px; }
+.profile-name{ font-weight:800; font-size:22px; color:#000; }
+.menu{ margin-top:18px; display:flex; flex-direction:column; gap:18px; }
+.menu-item{ color:#fff; font-weight:600; font-size:22px; display:flex; align-items:center; gap:10px; padding:6px 4px; text-decoration: none;}
+.menu-item.active{ color:#00D8FF; }
+.logout{ margin-top:auto; margin-bottom:30px; color:#cfe7ff; font-size:22px; opacity:0.8; cursor:pointer; display:block; text-align:center; width:100%; text-decoration: none; }
+
+/* Main Content Area */
+.main { padding-top: 24px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; background: #fff; }
+/* Header 영역 */
+.report-header { display: flex; flex-direction: column; gap: 15px; }
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+}
+
+.title-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.back {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    flex: 0 0 auto;
+}
+
+.back img {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+.header-top .page-title { margin: 0; }
+.page-title { font-weight: 800; font-size: 30px; color: #fff; margin: 10; }
+
+.notif {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 auto;
+}
+
+/* Main Content Area */
+.main {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    background: var(--bg);
+    align-items: center; 
+}
+
+/* Header 영역 */
+.report-header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.page-title {
+    margin: 20px;
+    font-weight: 800;
+    font-size: 30px;
+    color: #fff;
+}
+
+/* 탭 메뉴 */
+.tabs {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin: 26px 0 10px 20px;
+}
+
+.tab-btn {
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--neutral);
+    background: none;
+    border: none;
+    padding: 0 0 6px 0;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tab-btn.active {
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+.report-tab-content { display: none; }
+.report-tab-content.is-active { display: block; }
+
+.week-placeholder {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+/* 메인 그리드 시스템 (찌그러짐 방지를 위해 영역을 정확히 분할) */
+.summary-grid-layout {
+    display: grid;
+    width: 1041px;
+    /* 1열(생육), 2열(수질), 3열(환경일부), 4열(수확/환경일부) */
+    grid-template-columns: 298px 272px 147px 294px;
+    grid-template-rows: 166px 87px 164px;
+    
+    grid-template-areas:
+        "uni stack goal goal"
+        "uni stack env1 env2"
+        "judg judg env1 env3";
+    gap: 15px;
+}
+
+/* 개별 박스 공통 속성 */
+.report-box,
+.env-item {
+    
+    background: #ffffff !important;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 생육 균일도 (Box 1) */
+.uniformity {
+    font-size: 22px; 
+    font-weight: 700;
+    grid-area: uni;
+    height: 253px;
+}
+
+/* dailyReportBox1 (생육 균일도) - Figma 타이포그래피 맞춤 */
+.uniformity {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(2,16,46,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.uniformity .label-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 22px;      /* Figma 기준 레이블 크기 */
+    font-weight: 800;     /* 굵게 */
+    color: #000;       /* 어두운 청색 계열 */
+}
+
+.uniformity .label-row .badge {
+    font-size: 20px;
+    font-weight: 800;
+    padding: 6px 8px;
+    border-radius: 10px;
+    margin-top: 100;
+    background: #D9FFD2; /* 연한 그린 백그라운드 */
+    color: #009952;
+}
+
+.uniformity .value-row {
+    font-size: 60px;     /* 숫자 크기 (Figma와 동일하게 크게) */
+    font-weight: 900;    /* 매우 굵게 */
+    color: #071827;
+}
+.uniformity .value-row .unit {
+    font-size: 22px;     /* 단위 크기 조정 */
+    font-weight: 700;
+    margin-left: 6px;
+    color: rgba(7,24,39,0.7);
+}
+
+.uniformity .desc-row {
+    font-size: 18px;     /* 설명 텍스트 */
+    font-weight: 500;
+    color: #33434F;
+    line-height: 1.2;
+    max-width: 320px;
+}
+/* stack-item 내부 텍스트 크기 조정 */
+.value-row > span {
+    font-size: 20px; /* 레이블 크기 - 필요시 조정 */
+    line-height: 1;
+    font-weight: 700;
+}
+.value-row > strong {
+    font-size: 24px; /* 값 크기 조정: 24px */
+    font-weight: 900;
+}
+
+/* 수질 스택 (Box 2,3,4) */
+.stack-column {
+    grid-area: stack;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stack-item {
+    height: 76px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 700;
+}
+
+/* stack-item 내부 텍스트 크기 조정 */
+.stack-item > span {
+    font-size: 20px; /* 레이블 크기 - 필요시 조정 */
+    line-height: 1;
+}
+.stack-item > strong {
+    font-size: 24px; /* 값 크기 조정: 24px */
+    font-weight: 900;
+    color: var(--stack-value-color);
+}
+
+.stack-item.blue {
+    background: #0048ff;
+    color: #fff;
+}
+
+/* Ensure the numeric value inside the blue stack-item is white */
+.stack-column .stack-item.blue > strong {
+    color: #ffffff !important;
+}
+
+.stack-item.white {
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* [수정] 수확 목표 달성률 (Box 5) */
+.goal-box {
+    grid-area: goal;
+    background: url('../assets/images/dailyReportBox5.png') no-repeat center/cover !important;
+    border: 2px solid #02E8FF;
+    color: #fff;
+}
+
+/* 분리된 수치(.goal-percent)를 오른쪽에 크게 표시 */
+.goal-box { position: relative; overflow: hidden; }
+.goal-box .label-row2 { color: #fff; font-size: 14px; font-weight: 700; max-width: 60%; }
+.goal-percent {
+    position: absolute;
+    right: var(--goal-percent-right);
+    bottom: var(--goal-percent-bottom); /* 하단에 정렬 (변수로 제어) */
+    font-size: 56px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+}
+.goal-percent .unit { font-size: 24px; margin-left: 6px; }
+
+/* allow changing goal box numeric color via variable */
+.value-row2 {
+    color: var(--value-row2-color);
+}
+
+/* [수정] 종합판단 (Box 6) - 좌측 하단 정렬 및 꽉 채우기 */
+.judgment-box {
+    grid-area: judg;
+    /* 1. 박스 크기 고정 (Figma 수치 반영) */
+    width: var(--judg-width);
+    height: var(--judg-height);
+
+    /* 2. 배경 이미지 꽉 채우기 (핵심) */
+    /* use shorthand to ensure the image fully covers the box */
+    background: url('../assets/images/dailyReportBox6.png') center/cover no-repeat !important;
+    background-position: top center !important;
+    /* 원하는 위치로 조정 */
+
+    /* 3. 스타일 및 정렬 */
+    border-radius: 20px;
+    position: relative;
+    justify-self: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    /* remove inner white padding so image fills */
+    border: none;
+    overflow: hidden;
+    /* 이미지가 둥근 모서리 밖으로 나가지 않게 방지 */
+}
+
+    /* 종합판단 내부 문구 스타일 (judg-text) - configurable via :root variables */
+    .judg-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: #101828;
+        line-height: 1.4;        
+    }
+
+/* 환경 지표 (env1~3) */
+.env1 {
+    grid-area: env1; 
+    height: 266px; 
+    width: 147px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    padding: 24px;
+
+}
+
+.env2 {
+    grid-area: env2;
+    height: 87px;
+    
+}
+
+.env3 {
+    grid-area: env3;
+    height: 164px;
+    position: relative; /* 내부 값을 절대위치로 배치하기 위함 */
+}
+
+/* 특정 환경 아이템(예: env-hum)을 그리드 셀의 우측 하단에 고정 */
+.env-item.env-hum {
+    width: 267px;
+    height: 115px;
+    justify-self: end; /* 오른쪽 정렬 */
+    align-self: end;   /* 아래쪽 정렬 */
+    margin: 0 8px 8px 0; /* 우측/하단 약간의 여유 */
+}
+
+/* Typography controls for right-side boxes */
+.goal-box .label-row2,
+.report-box .label,
+.env1 .label,
+.env2 .label,
+.env3 .label {
+    font-size: 22px;
+    font-weight: var(--box-title-weight);
+    color: #071827;
+}
+
+/* ensure the goal box small label stays white on dark background */
+.goal-box .label-row2 { color: #fff; }
+
+.report-box .value,
+.env1 .value{
+    font-size: var(--box-value-size);
+    font-weight: var(--box-value-weight);
+    text-align: right;
+    line-height: 1;
+    margin-top: -20px; /* [배지와 숫자 밀착] 음수 마진 적용 */
+    color: #071827;
+}
+/* env2 & env3 */
+.env2 { grid-area: env2; height: 87px; }
+.env2 .value { font-size: 32px; font-weight: 900; text-align: right; }
+
+.env3 { grid-area: env3; height: 164px; }
+.env3 .badge { font-size: 20px; font-weight: 800; padding: 6px 8px; border-radius: 10px; background: #FEF2F2; color: #FB2C36; width: fit-content; }
+
+/* 타이포그래피 공통 */
+.report-box .label, .env1 .label, .env2 .label, .env3 .label {
+    font-size: 22px;
+    font-weight: var(--box-title-weight);
+    color: #071827;
+}
+
+/* 종합판단 레이블을 생육 균일도(.uniformity .label-row)와 동일한 크기/두께로 설정 */
+.judg-label {
+    font-size: 22px;
+    font-weight: 800;
+    color: #000000;
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* make sure .value-row2 (goal 35%) uses the variable and wins specificity */
+.goal-box .value-row2 {
+    color: var(--value-row2-color) !important;
+    font-size: var(--box-value-size);
+    font-weight: var(--box-value-weight);
+    position: absolute;
+    right: var(--goal-percent-right);
+    bottom: var(--goal-percent-bottom);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.goal-box .value-row2 .unit {
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 6px;
+}
+
+/* Right-align all numeric values across the report */
+.value,
+.value-row,
+.value-row2,
+.goal-percent,
+.env-value,
+.env-value.env-light,
+.report-box .value {
+    text-align: right;
+}
+
+/* Stack items: push the numeric value to the right */
+.stack-item strong {
+    font-size: 28px;
+    margin-left: 12px;
+    margin-right: 0;
+    text-align: right;
+    display: inline-block;
+    min-width: 80px;
+}
+
+/* 작은 값(예: env2의 26%)은 별도 변수 사용 */
+.env2 .value {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+/* env3(습도) 안의 수치를 우측 하단으로 고정 */
+.env3 .value {
+    position: absolute;
+    right: var(--env3-value-right);
+    bottom: var(--env3-value-bottom);
+    font-size: var(--box-value-size);
+    font-weight: var(--box-value-weight);
+    text-align: right;
+}
+
+
+
+/* 설명/서브 텍스트 */
+.goal-box .label-row2 p,
+.report-box .sub-label,
+.report-box .desc-row {
+    font-size: var(--box-desc-size);
+    font-weight: 500;
+    color: rgba(7,24,39,0.75);
+}
+
+/* badge 폰트 크기 조정 */
+.report-box .badge,
+.goal-box .badge{
+    font-size: 20px;
+    font-weight: 800;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: #D9FFD2; /* 연한 그린 백그라운드 */
+    color: #009952;
+}
+.env1 .badge{
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: var(--env1-badge-offset);
+    margin-bottom: auto; /* 숫자 100을 아래로 밀기 위함 */
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: #D9FFD2; /* 연한 그린 백그라운드 */
+    color: #009952;
+}
+.env3 .badge {
+    font-size: 20px;
+    font-weight: 800;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: #FEF2F2; /* 연한 그린 백그라운드 */
+    color: #FB2C36;
+    
+}
+.env-item .value { font-size: var(--box-value-size); font-weight: var(--box-value-weight); text-align: right; color: #071827; }
+
+/* 차트 영역 */
+.chart-container { width: 1058px; height: 383px; background: #fff; border-radius: 20px; padding: 30px; min-height: 220px; margin-bottom: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
+.arrow-down { display: flex; justify-content: center; margin: 8px 0 16px; }
+.arrow-down img { width: 34px; height: 32px; opacity: 0.7; }
+
+/* 그래프가 들어갈 플레이스홀더 박스 */
+.chart-container .chart-box {
+    width: 1000px;
+    height: 295px;
+    background: #e6e6e6; /* 연한 회색 */
+    border-radius: 8px;
+    margin: 16px auto 0; /* 컨테이너 내 중앙 정렬 */
+}

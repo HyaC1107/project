@@ -1,0 +1,210 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+    --primary: #1C80F9;
+    --danger: #FB2C36;
+    --neutral: #B2B7BE;
+    --text-dark: #364153;
+    /* 카드 크기 변수 */
+    --card-width: 330px;
+    --card-height: 346px;
+    --card-photo-height: 223px;
+    
+    
+}
+
+html, body { height: 100%; margin: 0; font-family: 'Pretendard';}
+
+body {
+    font-family: 'Pretendard';
+    background: #061A33; 
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+* { box-sizing: border-box; }
+
+
+/* 2단 그리드 레이아웃 */
+.canvas {
+    width: 1500px;
+    height: 940px;
+    display: grid;
+    grid-template-columns: 238px 1fr;
+    gap: 20px;
+    background: #fff; 
+    overflow: hidden;
+}
+.card selected{
+    height: 340px;
+}
+/* Sidebar (왼쪽) */
+.sidebar {
+    width: 238px;
+    padding: 25px 18px 10px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: linear-gradient(180deg, #080808 0%, #1C82FD 100%);
+    height: 100%;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.simbol-row { display:flex; align-items:center; gap:10px; margin-top:15px; margin-bottom:12px; }
+.symbol-img{ width:50px; height:auto; }
+.logo-img{ width:130px; height:auto; object-fit:contain; }
+.profile{ display:flex; align-items:center; gap:12px; background:#fff; padding:10px; border-radius:14px; }
+.profile img{ width:48px; height:48px; border-radius:10px; }
+.profile-name{ font-weight:800; font-size:22px; color:#000; }
+.menu{ margin-top:18px; display:flex; flex-direction:column; gap:18px; }
+.menu-item{ color:#fff; font-weight:600; font-size:22px; display:flex; align-items:center; gap:10px; padding:6px 4px; text-decoration: none;}
+.menu-item.active{ color:#00D8FF; }
+.logout{ margin-top:auto; margin-bottom:30px; color:#cfe7ff; font-size:22px; opacity:0.8; cursor:pointer; display:block; text-align:center; width:100%; text-decoration: none; }
+
+/* Main Content Area */
+.main { padding-top: 24px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; background: #fff; }
+.main-inner { position: relative; }
+
+.top-icons {
+    position: absolute;
+    top: 40px;
+    right: 35px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+}
+
+.bell-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+/* Header 영역 */
+.report-header { display: flex; flex-direction: column; gap: 15px; }
+.page-title { font-weight: 800; font-size: 30px; color: #000000; margin: 10; }
+
+.banner {
+    width: 100%;
+    max-width: 1179px;
+    height: 110px;
+    padding: 20px 30px;
+    background: linear-gradient(90deg, #3DBBC9 0%, #0E00D9 100%);
+    border: 3px solid #A9EDFF;
+    border-radius: 18px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 리포트 메인 컨테이너 */
+.report-main { 
+    background: #fff; 
+    border-radius: 20px; 
+    padding: 30px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+/* 카드 그리드 */
+.cards-row { display: flex; gap: 20px; flex-wrap: wrap; }
+
+/* --- [핵심 수정] 카드 스타일 --- */
+.card { 
+    width: var(--card-width); 
+    height: var(--card-height);
+    border-radius: 20px; 
+    position: relative; 
+    overflow: hidden; 
+    border: 3px solid #EDEDED; 
+    background: #fff; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* Selected 상태일 때 보더가 이미지를 가리지 않도록 처리 */
+.card.selected { 
+    border-width: 5px; /* 보더 두께 유지 */
+    border-color: var(--primary);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.25);
+}
+
+/* [핵심 수정] 사진 박스: 보더와의 틈새를 없애기 위해 미세하게 확장 */
+.card .photo { 
+    width: calc(100% + 2px); /* 좌우 1px씩 더 넓게 */
+    height: var(--card-photo-height); 
+    overflow: hidden; 
+    border-radius: 16px 16px 0 0; /* 카드 곡률보다 작게 설정하여 밀착 */
+    position: relative; 
+    left: -1px; /* 확장한 만큼 왼쪽으로 이동 */
+    top: -1px;  /* 상단 틈새 방지 */
+}
+
+/* 이미지: 스케일을 아주 살짝 키워 모서리 여백 원천 차단 */
+.card .photo img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+    transform: scale(1.05); /* 5% 확대하여 빈틈 제거 */
+    transform-origin: top left;
+}
+
+/* 카드 내부 뱃지 */
+.card-badges { 
+    position: absolute; 
+    top: 12px; /* 여백 제거를 위해 조금 더 상단으로 조정 */
+    left: 12px; 
+    display: flex; 
+    z-index: 10; 
+}
+
+.zone-badge { 
+    min-width: 90px;
+    padding-left: 5%;
+    height: 38px; 
+    max-width: 100%;
+    display: block;           
+    text-align: center;
+    border-radius: 50px; background: #fff; 
+    font-weight: 600; font-size: 24px; color: #000; 
+    overflow: hidden;     
+    text-overflow: ellipsis;
+    white-space: nowrap;  
+}
+
+
+/* 카드 텍스트 컨텐츠 */
+.card .content { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.content-link {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+}
+.crop-headline { font-weight: 700; font-size: 26px; color: #000; }
+.fish-headline { font-weight: 600; font-size: 26px; color: #000; }
+.harvest-headline { font-weight: 600; font-size: 26px; color: #000; }
+.harvest-date { font-weight: 700; }
+
+
+
+
+/* Pagination */
+.pagination { display: flex; align-items: center; gap: 24px; justify-content: center; padding: 30px 0; }
+.prev { color: #B7B7B7; font-size: 22px; cursor: pointer; }
+.page-number { color: #101828; font-size: 22px; cursor: pointer; }
+.page-number.active { font-weight: 700; border-bottom: 2px solid #101828; }
+.next { color: #101828; font-size: 22px; cursor: pointer; }

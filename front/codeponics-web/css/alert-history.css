@@ -1,0 +1,209 @@
+/* Styles specific to alert-history modal to match provided PNG */
+.alert-overlay {
+    position: fixed; /* absolute면 레이아웃에 따라 옆으로 밀립니다! 무조건 fixed! */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* 뒷배경 어둡게 */
+    display: none; /* 기본은 숨김 */
+    align-items: center;
+    justify-content: center;
+    z-index: 99999; /* 대시보드(canvas)보다 훨씬 높은 숫자로 설정 */
+}
+.alert-overlay:not([hidden]) {
+    display: flex !important;
+}
+
+/* JS에서 hidden을 넣었을 때 (overlay.hidden = true) */
+.alert-overlay[hidden] {
+    display: none !important;
+}
+.alert-modal {
+  width: 726px;
+  background: #fff;
+  border-radius: 20px; /* 전체 박스 곡률 */
+  box-shadow: 0 12px 36px rgba(0,0,0,0.45);
+  position: relative;
+  animation: alertFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 닫기 버튼을 위해 overflow: hidden을 쓰지 않는 대신, 내부 list에서 처리합니다 */
+  margin: auto;
+}
+
+.alert-close {
+  position: absolute;
+  right: -58px;
+  top: -58px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2001;
+}
+
+.alert-list { 
+  padding: 12px; 
+  height: 692px; 
+  overflow-y: auto; 
+  /* [중요] 리스트 자체에도 곡률을 주고, 넘치는 배경색을 자릅니다 */
+  border-radius: 20px; 
+  overflow-x: hidden;
+  /* style.css 전역 .alert-list(gap 등) 영향 차단 */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* 스크롤바 유무에 따른 우측 라인 흔들림 방지 */
+  scrollbar-gutter: stable;
+}
+
+.alert-row { 
+  display: grid;
+  grid-template-columns: 72px 1fr 120px;
+  align-items: center;
+  column-gap: 18px;
+  height: 140px; 
+  padding: 0 24px; 
+}
+.alert-row.unread {
+    background: rgba(37, 179, 255, 0.04); /* 아주 옅은 파란색 배경 */
+}
+.new-dot {
+    color: #FB2C36; /* 위험색과 통일 */
+    margin-left: 6px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.new-label {
+    display: inline-block;
+    color: #FB2C36;
+    font-weight: 800;
+    font-size: 18px;
+    margin-top: 4px;
+}
+.bell.has-new {
+    position: relative;
+}
+.bell.has-new::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background: #FB2C36;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+/* [해결사] 첫 번째와 마지막 행의 배경색이 곡률을 뚫고 나가지 않게 조절 */
+.alert-row:first-child {
+  border-radius: 20px 20px 0 0;
+}
+.alert-row:last-child {
+  border-radius: 0 0 20px 20px;
+}
+
+.alert-row.alert-danger { 
+  background: rgba(251, 44, 54, 0.06); 
+}
+
+/* 우측 정렬 유지 */
+.right { 
+  width: 120px; 
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  justify-self: end;
+  color: #4A5565;
+  text-align: right;
+}
+
+/* 아이콘 꽉 차게 */
+.icon { 
+  width: 72px; 
+  height: 72px; 
+  border-radius: 12px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  overflow: hidden; 
+  border: none; 
+}
+
+.icon-img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block; 
+}
+
+.danger-icon { background: #FB2C36; color: #fff; }
+.blue-icon { background: #3B82F6; color: #fff; }
+
+.title { font-size: 24px; color: #000000; margin-bottom: 6px; font-weight: 700; line-height: 1.2; }
+.desc { color: #4A5565; font-size: 24px; font-weight: 500; line-height: 1.2; }
+
+.time {
+  display: block;
+  font-size: 20px;
+  color: #4A5565;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 24px;
+  white-space: nowrap;
+  width: 100%;
+  text-align: right;
+}
+.status { 
+  display: block;
+  font-size: 20px; 
+  color: #4A5565; 
+  font-weight: 500; 
+  margin-top: 15px; 
+  text-align: right; 
+  line-height: 24px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.date {
+  display: block;
+  font-size: 20px;
+  color: #4A5565;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 24px;
+  white-space: nowrap;
+  width: 100%;
+  text-align: right;
+}
+
+.divider { height: 1px; background: #E6E9EE; margin: 0 8px; }
+
+@media (max-width: 700px) {
+  .alert-modal { width: 92%; }
+  .alert-close { right: 10px; top: 10px; width: 40px; height: 40px; }
+}
+
+@keyframes alertFadeIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.alert-list::-webkit-scrollbar {
+    width: 6px;
+}
+.alert-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.alert-list::-webkit-scrollbar-thumb {
+    background: #E6E9EE;
+    border-radius: 10px;
+}

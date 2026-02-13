@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>모니터링 상세 - CodePonics</title>
+  <link rel="stylesheet" href="css/monitoring-cam-detail.css" />
+  <link rel="stylesheet" href="css/alert-modal.css" />
+  <!-- Socket.io 라이브러리 (JS보다 먼저 로드!) -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+
+<body class="alert-modal-fullscreen">
+  <div class="canvas">
+    <header class="topbar">
+      <a class="back" href="monitoring.html" aria-label="뒤로가기">
+        <img src="./assets/icon/back-arrow.svg" alt="" aria-hidden="true" />
+      </a>
+      <h1 class="headline" id="device-title">모듈 모니터링</h1>
+        <a class="bell-link" href="alert-history.html" style="background-color: aliceblue; width: 32px;">
+            <img src="./assets/icon/black-bell.svg" alt="알림" class="bell-icon">
+        </a>
+    </header>
+
+    <section class="banner" aria-label="AI 분석 배너">
+      <strong>AI 분석 결과</strong>
+      <span id="ai-review-1">데이터를 분석 중입니다...</span>
+    </section>
+
+    <section class="grid" aria-label="카메라 상세 모니터링">
+      <div class="left">
+        <!-- 기상/환경 데이터 -->
+        <div class="metric" role="group" aria-label="온도">
+          <div class="metric__label">온도</div>
+          <div class="metric__value"><span class="num" id="val-air-temp">-</span><span class="unit">°C</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric metric--half" role="group" aria-label="습도">
+            <div class="metric__label">습도</div>
+            <div class="metric__value"><span class="num" id="val-humidity">-</span><span class="unit">%</span></div>
+          </div>
+
+          <div class="metric metric--half" role="group" aria-label="밝기">
+            <div class="metric__label">밝기</div>
+            <div class="metric__value"><span class="num" id="val-lux">-</span><span class="unit">%</span></div>
+          </div>
+        </div>
+
+        <section class="panel panel--radar" aria-label="농장 건강 점수">
+          <div class="panel__title">농장 건강 점수</div>
+          <div class="radar" style="width: 100%; height: 250px;">
+            <canvas id="radarChart"></canvas>
+          </div>
+        </section>
+      </div>
+
+      <div class="center">
+        <section class="panel panel--media" id="camera-panel">
+          <div class="rec">
+            <span class="rec__dot"></span>
+            <span class="rec__text">LIVE</span>
+          </div>
+          <div class="media" id="bbox-container">
+            <img id="main-camera-feed" src="./assets/images/briefing_character.jpg" alt="실시간 모니터링" class="media__img" />
+            <!-- AI Bounding Boxes는 JS에서 동적으로 생성됩니다 -->
+          </div>
+        </section>
+      </div>
+
+      <div class="right">
+        <!-- 수질 데이터 -->
+        <div class="metric-grid">
+          <div class="metric metric--tight">
+            <div class="metric__label">수질 산도</div>
+            <div class="metric__value"><span class="num" id="val-ph">-</span><span class="unit">pH</span></div>
+          </div>
+          <div class="metric metric--tight">
+            <div class="metric__label">전기전도도</div>
+            <div class="metric__value"><span class="num" id="val-ec">-</span><span class="unit">mS/cm</span></div>
+          </div>
+          <div class="metric metric--tight">
+            <div class="metric__label">수온</div>
+            <div class="metric__value"><span class="num" id="val-water-temp">-</span><span class="unit">°C</span></div>
+          </div>
+          <div class="metric metric--tight">
+            <div class="metric__label">용존산소</div>
+            <div class="metric__value"><span class="num" id="val-do">-</span><span class="unit">mg/L</span></div>
+          </div>
+        </div>
+
+        <section class="panel" aria-label="작물 생육 지표 분석">
+          <div class="panel__title panel__title--single">작물 생육 지표 분석</div>
+          <div class="bars" id="growth-bars">
+            <div class="bar" id="bar-humidity" style="--v: 0">
+              <div class="bar__fill"></div>
+              <div class="bar__val">0</div>
+              <div class="bar__label">습도</div>
+            </div>
+            <div class="bar" id="bar-lux" style="--v: 0">
+              <div class="bar__fill"></div>
+              <div class="bar__val">0</div>
+              <div class="bar__label">밝기</div>
+            </div>
+            <div class="bar" id="bar-growth-rate" style="--v: 0">
+              <div class="bar__fill"></div>
+              <div class="bar__val">0</div>
+              <div class="bar__label">성장도</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- 에너지 흐름 차트 (생략 가능하나 유지) -->
+    <section class="panel panel--wide">
+      <div class="wide-head">
+          <div class="panel__title panel__title--single">실시간 수중 pH</div>
+      </div>
+      <div class="line">
+          <canvas id="realtimeChart" style="width: 100%; height: 200px;"></canvas>
+      </div>
+    </section>
+  </div>
+
+  <!-- 전용 자바스크립트 로드 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/monitoring-cam-detail.js"></script>
+  <script type="module" src="js/alert-modal.js"></script>
+</body>
+</html>

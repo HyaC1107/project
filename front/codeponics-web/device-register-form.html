@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Device Register Form - CodePonics</title>
+    <link rel="stylesheet" href="css/device-register-form.css">
+</head>
+
+<body>
+    <div class="canvas">
+        <nav class="sidebar" aria-label="사이드바">
+            <div class="simbol-row">
+                <img src="./assets/logo/simbol.svg" alt="symbol" class="symbol-img">
+                <img src="./assets/logo/logo.svg" alt="CodePonics 로고" class="logo-img">
+            </div>
+
+            <div class="profile">
+                <img src="./assets/images/profile.svg" alt="profile">
+                <div class="profile-name">어부의텃밭</div>
+            </div>
+
+            <nav class="menu" aria-label="메뉴">
+                <a class="menu-item" href="dashboard.html"><img src="./assets/icon/menu icon1_off.svg" alt="">대시보드</a>
+                    <a class="menu-item" href="monitoring.html"><img src="./assets/icon/menu icon2_off.svg" alt="">모니터링</a>
+                <a class="menu-item" href="report-list.html"><img src="./assets/icon/menu icon3_off.svg" alt="">리포트</a>
+                <a class="menu-item" href="diary-list.html"><img src="./assets/icon/menu icon4_off.svg" alt="">성장 일지</a>
+                <a class="menu-item active" href="device-register-form.html"><img src="./assets/icon/menu icon5_on.svg" alt="">시스템 설정</a>
+            </nav>
+
+            <a class="logout" href="index.html">로그아웃 →</a>
+        </nav>
+
+        <main class="main" aria-label="콘텐츠">
+            <section class="register" aria-label="기기 등록">
+                <div class="registerCard">
+                    <div class="registerBrand" aria-hidden="true">
+                        <img class="registerBrand__logo" src="./assets/logo/register-logo.png" alt="CodePonics">
+                    </div>
+
+                    <form class="registerForm">
+                        <div class="field">
+                            <label class="field__label" for="serial">기기 시리얼 No.</label>
+                            <input class="field__control" id="serial" name="serial" type="text" value="CP-2026-X01-001" />
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="deviceName">기기명</label>
+                            <input class="field__control" id="deviceName" name="deviceName" type="text" value="ZoneA" />
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="cropDropdown">재배 작물</label>
+                            <div class="dropdown" data-name="crop" data-icon="🥬">
+                                <button class="field__control dropdown__toggle" type="button" id="cropDropdown" aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="dropdown__icon" aria-hidden="true">🥬</span>
+                                    <span class="dropdown__value">상추</span>
+                                </button>
+                                <ul class="dropdown__menu" role="listbox" tabindex="-1" aria-label="재배 작물 옵션">
+                                    <li class="dropdown__option is-selected" role="option" aria-selected="true" data-value="상추">🥬 상추</li>
+                                    <li class="dropdown__option" role="option" aria-selected="false" data-value="딸기">🍓 딸기</li>
+                                    <li class="dropdown__option" role="option" aria-selected="false" data-value="바질">🌿 바질</li>
+                                    <li class="dropdown__option" role="option" aria-selected="false" data-value="케일">🥬 케일</li>
+                                </ul>
+                                <input type="hidden" name="crop" value="상추" />
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="fishDropdown">어종</label>
+                            <div class="dropdown" data-name="fish" data-icon="🐟">
+                                <button class="field__control dropdown__toggle" type="button" id="fishDropdown" aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="dropdown__icon" aria-hidden="true">🐟</span>
+                                    <span class="dropdown__value">향어</span>
+                                </button>
+                                <ul class="dropdown__menu" role="listbox" tabindex="-1" aria-label="어종 옵션">
+                                    <li class="dropdown__option is-selected" role="option" aria-selected="true" data-value="향어">🐟 향어</li>
+                                    <li class="dropdown__option" role="option" aria-selected="false" data-value="틸라피아">🐠 틸라피아</li>
+                                    <li class="dropdown__option" role="option" aria-selected="false" data-value="메기">🐡 메기</li>
+                                    <li class="dropdown__option" role="option" aria-selected="false" data-value="무지개송어">🐟 무지개송어</li>
+                                </ul>
+                                <input type="hidden" name="fish" value="향어" />
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="location">설치위치</label>
+                            <input class="field__control" id="location" name="location" type="text" placeholder="예시) 실내 농장" />
+                        </div>
+
+                        <div class="actions">
+                            <a class="btn btn--cancel" href="index.html">취소</a>
+                            <a class="btn btn--save" href="dashboard.html">저장</a>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        (function () {
+            function closeAllDropdowns(except) {
+                document.querySelectorAll('.dropdown.is-open').forEach(function (dropdown) {
+                    if (except && dropdown === except) return;
+                    dropdown.classList.remove('is-open');
+                    var toggle = dropdown.querySelector('.dropdown__toggle');
+                    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                });
+            }
+
+            document.addEventListener('click', function (event) {
+                var dropdown = event.target.closest('.dropdown');
+                if (!dropdown) {
+                    closeAllDropdowns();
+                    return;
+                }
+
+                var toggle = event.target.closest('.dropdown__toggle');
+                if (toggle) {
+                    var isOpen = dropdown.classList.contains('is-open');
+                    closeAllDropdowns(dropdown);
+                    dropdown.classList.toggle('is-open', !isOpen);
+                    toggle.setAttribute('aria-expanded', String(!isOpen));
+                    return;
+                }
+
+                var option = event.target.closest('.dropdown__option');
+                if (!option) return;
+
+                var value = option.getAttribute('data-value') || option.textContent.trim();
+                var valueEl = dropdown.querySelector('.dropdown__value');
+                if (valueEl) valueEl.textContent = value;
+
+                dropdown.querySelectorAll('.dropdown__option').forEach(function (opt) {
+                    var selected = opt === option;
+                    opt.classList.toggle('is-selected', selected);
+                    opt.setAttribute('aria-selected', selected ? 'true' : 'false');
+                });
+
+                var hidden = dropdown.querySelector('input[type="hidden"]');
+                if (hidden) hidden.value = value;
+
+                closeAllDropdowns();
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') closeAllDropdowns();
+            });
+        })();
+    </script>
+</body>
+
+</html>
