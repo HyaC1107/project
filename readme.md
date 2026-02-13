@@ -120,6 +120,7 @@ LLM을 통해 사용자에게 직관적인 리포트를 제공하여 누구나 �
 <p align="center">
 <img width="1483" height="904" alt="10" src="https://github.com/user-attachments/assets/8bd652b3-ff18-4757-915e-88f0491d79d3" />
 </p>
+
 ### **사용자 설정**
 <p align="center">
 <img width="1493" height="912" alt="11" src="https://github.com/user-attachments/assets/f9a5db5d-892c-4e14-b28e-145aa26127eb" />
@@ -189,5 +190,6 @@ Issue 3: 센서 데이터 노이즈
 문제: 수조 환경 특성상 센서 데이터가 순간적으로 튀는 이상치(Outlier) 빈번 발생.
 
 해결: 이동 평균 필터(Moving Average)와 이상치 제거 로직을 적용하여 데이터 신뢰도 확보.
+
 
 
