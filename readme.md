@@ -89,8 +89,9 @@ LLM을 통해 사용자에게 직관적인 리포트를 제공하여 누구나 �
 </p>
 
 ## 📌 유스케이스
-
-
+<p align="center">
+<img width="775" height="559" alt="image" src="https://github.com/user-attachments/assets/3adf29dc-4685-43fc-bde0-e0c4eb6" />
+</p>
 
 ## 📌 서비스 흐름도 (Logic)
 <p align="center">
@@ -130,11 +131,14 @@ LLM을 통해 사용자에게 직관적인 리포트를 제공하여 누구나 �
 
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table>
+
 <tr>
-<td align="center"><img src="https://via.placeholder.com/100?text=Leader" width="100" height="100"/></td>
-<td align="center"><img src="https://via.placeholder.com/100?text=Member1" width="100" height="100"/></td>
-<td align="center"><img src="https://via.placeholder.com/100?text=Member2" width="100" height="100"/></td>
-<td align="center"><img src="https://via.placeholder.com/100?text=Member3" width="100" height="100"/></td>
+
+
+<td align="center"><img width="100" height="100" alt="치즈" src="https://github.com/user-attachments/assets/a471010b-cd8c-424e-b8fe-a8d03e17ed4b" /></td>
+<td align="center"><img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/67bd835d-b848-4823-aac8-5fe0cbd5a538" /></td>
+<td align="center"><img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/8a624d72-62d5-44dd-b336-e8598224980d" /></td>
+<td align="center"><img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/633a47b7-c5ed-44e7-b8cc-6fc25ae37622" /></td>
 </tr>
 <tr>
 <td align="center"><strong>장철영</strong></td>
@@ -164,9 +168,9 @@ Frontend Dev</td>
 </tr>
 <tr>
 <td align="center"><a href="https://github.com/HyaC1107" target='_blank'>github</a></td>
-<td align="center"><a href="https://github.com/깃헙아이디" target='_blank'>github</a></td>
-<td align="center"><a href="https://github.com/깃헙아이디" target='_blank'>github</a></td>
-<td align="center"><a href="https://github.com/깃헙아이디" target='_blank'>github</a></td>
+<td align="center"><a href="https://github.com/Capernaum-user" target='_blank'>github</a></td>
+<td align="center"><a href="https://github.com/kimtytytyty" target='_blank'>github</a></td>
+<td align="center"><a href="https://github.com/eelishalee" target='_blank'>github</a></td>
 </tr>
 </table>
 
@@ -192,6 +196,7 @@ Issue 3: 센서 데이터 노이즈
 문제: 수조 환경 특성상 센서 데이터가 순간적으로 튀는 이상치(Outlier) 빈번 발생.
 
 해결: 이동 평균 필터(Moving Average)와 이상치 제거 로직을 적용하여 데이터 신뢰도 확보.
+
 
 
 
