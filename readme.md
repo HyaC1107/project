@@ -90,7 +90,7 @@ LLM을 통해 사용자에게 직관적인 리포트를 제공하여 누구나 �
 
 ## 📌 유스케이스
 <p align="center">
-<img width="775" height="559" alt="image" src="https://github.com/user-attachments/assets/3adf29dc-4685-43fc-bde0-e0c4eb6" />
+<img width="593" height="572" alt="유스케이스" src="https://github.com/user-attachments/assets/af08730b-9b54-49f3-b1d4-6a5f595e7e3a" />
 </p>
 
 ## 📌 서비스 흐름도 (Logic)
@@ -196,6 +196,7 @@ Issue 3: 센서 데이터 노이즈
 문제: 수조 환경 특성상 센서 데이터가 순간적으로 튀는 이상치(Outlier) 빈번 발생.
 
 해결: 이동 평균 필터(Moving Average)와 이상치 제거 로직을 적용하여 데이터 신뢰도 확보.
+
 
 
 
