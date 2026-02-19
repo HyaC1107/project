@@ -2,6 +2,7 @@
 <p align="center">
 <img width="700" height="990" alt="image" src="https://github.com/user-attachments/assets/0739485b-a715-474f-8d19-e256b65a3649" />
 </p>
+
 ## 👀 서비스 소개
 ### 서비스명: AI 지능형 아쿠아포닉스 통합 관리 모듈
 
@@ -196,6 +197,7 @@ Issue 3: 센서 데이터 노이즈
 문제: 수조 환경 특성상 센서 데이터가 순간적으로 튀는 이상치(Outlier) 빈번 발생.
 
 해결: 이동 평균 필터(Moving Average)와 이상치 제거 로직을 적용하여 데이터 신뢰도 확보.
+
 
 
 
