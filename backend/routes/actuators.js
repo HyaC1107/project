@@ -25,7 +25,7 @@ router.post('/log', async (req, res) => {
             notiService.notify({
                 serial_number,
                 title: actuator_name, // 'undefined' 방지를 위해 정확한 이름 전달
-                message: `${actuator_name}가 ${action_type === 'on' ? '가동' : '중단'}되었습니다.`,
+                message: `${actuator_name}가 ${action_type === 'on' ? '가동' : '가동'}되었습니다.`,
                 priority: 'low',
                 recorded_at: new Date()
             });

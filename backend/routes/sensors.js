@@ -83,7 +83,7 @@ router.post('/report', async (req, res) => {
                 'INSERT INTO sensor_logs (module_id, sensor_data) VALUES ($1, $2)',
                 [moduleId, JSON.stringify(sensor_data)]
             );
-            console.log('센서로그 15분마다 저장중');           
+            // console.log('센서로그 15분마다 저장중');           
 
             // [Step C] RPi가 보내온 수질 분석 결과 저장 (ai_results_water)
             if (water_analysis) {

@@ -38,11 +38,11 @@ async function init() {
 async function loadJournalDetail(journalId) {
     try {
         // 백엔드 라우터: /api/ai/journal/detail/:journal_id
-        console.log(journalId);
+        // console.log(journalId);
         
         const response = await API.getJournalDetail(journalId);
         // const result = await response.json();
-        console.log(response);
+        // console.log(response);
         
         if (response.data) {
             const journal = response.data;

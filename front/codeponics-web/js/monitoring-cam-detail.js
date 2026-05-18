@@ -302,7 +302,7 @@ async function loadGrowthMetrics() {
         
         if (response && response.success) {
             const data = response.data; // 백엔드 구조에 따라 response.data 혹은 response 바로 사용
-            console.log(data);
+            // console.log(data);
             
             // 1. 성장도 백분율 막대 업데이트 (growth_rate_pct)
             updateProgressBar(UI.barGrowth, data.growth_rate_pct);

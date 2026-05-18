@@ -50,7 +50,7 @@ async function loadHistoryData() {
         if (result) {
             // 2. 최신 수확 기록이 위로 오도록 정렬
             allJournals = result.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-            console.log("정렬된 데이터:", allJournals);
+            // console.log("정렬된 데이터:", allJournals);
         } else {
             allJournals = [];
             console.warn("데이터가 배열 형식이 아닙니다.");

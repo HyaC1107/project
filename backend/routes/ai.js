@@ -541,7 +541,7 @@ router.get('/journal/history-list/:module_id', isLoggedIn, async (req, res) => {
  */
 router.get('/journal/detail/:journal_id', isLoggedIn, async (req, res) => {
     const { journal_id } = req.params;
-    console.log(req.user.user_id);
+    // console.log(req.user.user_id);
 
     try {
         // 1. 보안 체크: 해당 일지가 현재 로그인한 사용자의 것인지 확인
@@ -552,7 +552,7 @@ router.get('/journal/detail/:journal_id', isLoggedIn, async (req, res) => {
             JOIN modules m ON j.module_id = m.module_id
             WHERE j.journal_id = $1 AND m.user_id = $2
         `, [journal_id, req.user.user_id]);
-        console.log(journalCheck);
+        // console.log(journalCheck);
         if (journalCheck.rows.length === 0) {
             return res.status(403).json({ success: false, error: "접근 권한이 없거나 존재하지 않는 일지입니다." });
         }

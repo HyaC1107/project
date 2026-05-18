@@ -49,7 +49,7 @@ async function loadModulesFromServer() {
     try {
         const response = await API.getMyDevices();
         const devices = response.data || [];
-        console.log(devices);
+        // console.log(devices);
         
         if (UI.moduleList) {
             UI.moduleList.innerHTML = devices.length > 0 
@@ -296,7 +296,7 @@ async function handleExcelDownload() {
         if (!response.success || !response.data.logs) throw new Error("데이터 없음");
 
         const logs = response.data.logs;
-        console.log(logs);        
+        // console.log(logs);        
         // 3. 엑셀 데이터용 배열 생성 (헤더 포함)
         const excelData = logs.map(log => ({
             "기록시간": new Date(log.created_at).toLocaleString(),

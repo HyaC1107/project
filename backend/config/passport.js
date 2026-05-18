@@ -71,7 +71,7 @@ passport.use(new NaverStrategy({
     // profile 객체 구조가 구글/카카오랑 조금 달라요.
     // passport-naver-v2는 데이터를 깔끔하게 정리해서 줍니다.
     const { id, email, nickname, profileImage } = profile;
-    console.log(nickname);
+    // console.log(nickname);
     
     try {
         // 1. 이미 가입된 사용자인지 확인 (provider 체크 필수!)

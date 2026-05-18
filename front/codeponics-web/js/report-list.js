@@ -38,10 +38,10 @@ async function loadReportListData() {
         UI.reportGrid.innerHTML = '';
         
         for (const device of devices) {
-            console.log(device);            
+            // console.log(device);            
             const crop_res = await API.getGrowthData(device.module_id);
             const ai_crop = crop_res.data || [];
-            console.log(ai_crop);
+            // console.log(ai_crop);
             // 객체를 ISO 문자열로 바꾼 뒤 'T'를 기준으로 자르기
             // 결과: "2026. 3. 14." 또는 "2026-03-14" (브라우저 설정에 따라 다름)
             const harvest_date = new Date(ai_crop.expected_harvest_date).toLocaleDateString('ko-KR').replace(/\. /g, '-').replace(/\.$/, '');

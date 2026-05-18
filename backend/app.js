@@ -22,15 +22,17 @@ app.set('io', io);
 
 const notificationService = new NotificationService(io, db);
 app.set('notificationService', notificationService);
-const allowedOrigins = ['http://localhost:5500', 'http://127.0.0.1:5500'];
+const allowedOrigins = '*';
 const corsOptions = {
     origin:  function(origin, callback) {
-        if (!origin) return callback(null, true);  // Postman 등 서버 직접 호출 허용
-        if (allowedOrigins.includes(origin)) {
+        // if (!origin) return callback(null, true);  // Postman 등 서버 직접 호출 허용
+        // if (allowedOrigins.includes(origin)) {
+        // callback(null, true);
+        // } else {
+        // callback(new Error('Not allowed by CORS'));
+        // }
+        if (!origin) return callback(null, true);
         callback(null, true);
-        } else {
-        callback(new Error('Not allowed by CORS'));
-        }
     }, 
     credentials: true, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],

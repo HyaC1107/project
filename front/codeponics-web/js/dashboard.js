@@ -391,7 +391,7 @@ function setupEventListeners() {
 
     // 모니터링 사진 업데이트 알림
     socket.on('new_monitoring_photo', (data) => {
-        console.log("데이터",data);
+        // console.log("데이터",data);
         
         if (currentModule) { // 시리얼 번호 체크 로직 추가 가능
             UI.cameraFeed.src = `${data.photo_url}?t=${Date.now()}`;
